@@ -1,0 +1,38 @@
+package LeetCode;
+
+import javax.validation.constraints.Min;
+
+/**
+ * @description: leetcode上部分关于滑动窗口解法的题目
+ * @author: zhanghailang
+ * @date: 2021/2/4 0004 22:11
+ */
+public class SlipWindow {
+    /**
+     * LeetCode #209
+     * 长度最小的子数组
+     * 题目描述：
+     * 给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。
+     * 示例:
+     * 输入：s = 7, nums = [2,3,1,2,4,3]
+     * 输出：2
+     * 解释：子数组 [4,3] 是该条件下的长度最小的子数组。
+     */
+    public static int minLenOfArray(int[] array,int s){
+        int re = 0;
+        for (int i = 0; i < array.length; i ++){
+            for (int j = 1; j < array.length; j++){
+                if (array[i] + array[j] >= s){
+                    re = j - i;
+                    return Math.min(re,j-i-1);
+                }
+            }
+        }
+        return re;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {2,3,1,2,4,3};
+        System.out.println(minLenOfArray(nums,8));
+    }
+}
