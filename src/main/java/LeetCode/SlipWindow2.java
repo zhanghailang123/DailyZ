@@ -2,6 +2,8 @@ package LeetCode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @description: LeetCode438
@@ -83,5 +85,14 @@ public class SlipWindow2 {
         for (int i = 0; i < s.length(); i ++){
             System.out.println(s.charAt(i) - 'a');
         }
+//        ThreadPoolExecutor
+                ;
+//        org.apache.tomcat.util.threads.ThreadPoolExecutor;?
+        int cpus = Runtime.getRuntime().availableProcessors();
+        System.out.println(cpus + "ooooooo");
+        Thread t = new Thread();
+        t.stop();
+        t.interrupt();
+        ReentrantLock lock = new ReentrantLock();
     }
 }
