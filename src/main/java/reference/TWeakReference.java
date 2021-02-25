@@ -1,6 +1,5 @@
 package reference;
 
-import org.aspectj.weaver.ast.Var;
 
 import java.lang.ref.WeakReference;
 
