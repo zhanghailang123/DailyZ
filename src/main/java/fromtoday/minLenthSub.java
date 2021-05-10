@@ -48,6 +48,30 @@ public class minLenthSub {
         return ans == Integer.MAX_VALUE ? 0 : ans;
     }
 
+    // calm,careful,study
+    //临界点 需要转换的问题
+    public int minLen(int[] arr,int s){
+        int start = 0;
+        int end = 0;
+        int sum = 0;
+        int res = Integer.MAX_VALUE;
+        while (end <= arr.length){
+            //不能这么直接加
+//            sum += arr[end] + arr[start];
+            sum += arr[end];
+            while (sum >= s){
+                //这步里面的顺序和逻辑是怎么样的？
+//                res = start - end;
+                res = Math.min(res,end -start + 1);
+                sum -= arr[start];
+                start ++;
+
+            }
+            end ++;
+
+        }
+        return res == Integer.MAX_VALUE ? 0 : res;
+    }
     public static void main(String[] args) {
         int[] arrays = {1,2,2,1,4,5,6,2};
         System.out.println(getResultByWindow(arrays,10));

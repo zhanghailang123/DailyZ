@@ -78,17 +78,25 @@ public class LongestComStr {
      * @return
      */
     public static String solution3(String[] strs){
-        return "";
+        if (strs == null || strs.length == 0){
+            return "";
+        }else {
+            return longestCommonPrefix(strs,0,strs.length - 1);
+        }
     }
 
-    public String longestCommonPrefix(String[] strs,int start,int end){
+    public static String longestCommonPrefix(String[] strs,int start,int end){
         if (start == end){
             return strs[start];
+        } else {
+            int mid = (end - start) / 2 + start;
+            String lcpLeft = longestCommonPrefix(strs,start,mid);
+            String lcpRight = longestCommonPrefix(strs,mid + 1,end);
+            return commonPrefix(lcpLeft,lcpRight);
         }
-        return null;
     }
 
-    public String commonPrefix(String lcpLeft,String lcpRight){
+    public static String commonPrefix(String lcpLeft,String lcpRight){
         int minLength = Math.min(lcpLeft.length(),lcpRight.length());
         for (int i = 0; i < minLength; i++){
             if (lcpLeft.charAt(i) != lcpRight.charAt(i)){
@@ -102,5 +110,6 @@ public class LongestComStr {
         String[] strs = {"abcde","abcdfe","abcrt"};
         System.out.println(solution(strs));
         System.out.println(solution2(strs));
+        System.out.println(solution3(strs));
     }
 }

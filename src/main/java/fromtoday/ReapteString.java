@@ -1,6 +1,9 @@
 package fromtoday;
 
+import javax.validation.constraints.Max;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -10,7 +13,7 @@ import java.util.Set;
  * https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
  */
 public class ReapteString {
-    public int lengthOfLongest(String s){
+    public static int lengthOfLongest(String s){
         //哈希集合，记录每个字符是否出现过
         Set<Character> occ= new HashSet<>();
         int n = s.length();
@@ -28,5 +31,33 @@ public class ReapteString {
             ans = Math.max(ans,rk - i + 1);
         }
         return ans;
+    }
+
+    /**
+     * 不含有重复字符的最长字串
+     * @param s
+     * @return
+     */
+    public static int lenthOfStr(String s){
+        HashSet hashSet = new HashSet<Character>();
+        int sta = 0;
+        int right = 0;
+        int res = 0;
+        for (int i = 0; i< s.length(); i++){
+            if (hashSet.contains(s.charAt(i))){
+                sta ++;
+                res = Math.max(res,right - sta + 1);
+            }
+            if (!hashSet.contains(s.charAt(i))){
+                hashSet.add(s.charAt(i));
+                right ++ ;
+            }
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(ReapteString.lengthOfLongest("abcdeef"));
+        System.out.println(ReapteString.lenthOfStr("abcdeff"));
     }
 }

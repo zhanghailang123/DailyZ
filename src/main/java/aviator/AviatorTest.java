@@ -45,7 +45,7 @@ public class AviatorTest {
 
     }
     private static String getMergedString(List<String> list,String separator){
-        AopContext.currentProxy();
+//        AopContext.currentProxy();
         StringBuilder stringBuilder = new StringBuilder();
         StringBuffer stringBuffer = new StringBuffer();
         for (String string : list){
