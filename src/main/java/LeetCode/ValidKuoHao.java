@@ -41,17 +41,21 @@ public class ValidKuoHao {
                 if (stack.isEmpty() || ch != paMap.get(stack.peek())){
 //                    System.out.println(stack.peek());
 //                    System.out.println(paMap.get(stack.peek()));
-                    stack.pop();
+
                     return false;
                 }
+                stack.pop();
 
             }
+        }
+        if (!stack.isEmpty()) {
+            return false;
         }
         return true;
     }
 
     public static void main(String[] args) {
-        Boolean re = solution("{[]}");
+        Boolean re = solution("((");
         System.out.println(re);
     }
 }
