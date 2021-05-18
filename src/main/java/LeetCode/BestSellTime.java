@@ -87,10 +87,37 @@ public class BestSellTime {
         }
         return dp[len-1][0];
     }
+
+    /**
+     * 只想循环一次 不想循环两次
+     * 使用空间复杂度来换取时间复杂度的优化
+     * 牛牛牛 这个方法可以
+     * @param nums
+     * @return
+     */
+    public static int dpSolution1(int[] nums){
+        int n = nums.length;
+        if (n < 2){
+            return 0;
+        }
+        int minPrice = Integer.MAX_VALUE;
+        int res = 0;
+        //[7,1,5,3,6,4]  [1,2]
+        for (int i = 0; i < nums.length; i ++){
+            minPrice = Math.min(minPrice,nums[i]);
+            if (i == 0){
+                res = 0;
+            }
+            else if(nums[i] > nums[i-1]){
+                res = Math.max(res,nums[i] - minPrice);
+            }
+        }
+        return res;
+    }
     public static void main(String[] args) {
-        int[] nums = {7,1,8,10,6,4};
-        System.out.println(solution(nums,2));
-        System.out.println(solution1(nums));
-        System.out.println(dpSolution(nums));
+        int[] nums = {1,2};
+//        System.out.println(solution(nums,2));
+//        System.out.println(solution1(nums));
+        System.out.println(dpSolution1(nums));
     }
 }
