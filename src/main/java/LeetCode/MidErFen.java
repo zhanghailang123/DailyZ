@@ -37,6 +37,7 @@ public class MidErFen {
 
     /**
      * correct solution
+     * deep known
      * @param nums
      * @param target
      * @return
@@ -56,11 +57,26 @@ public class MidErFen {
         }
         return -1;
     }
+
+    public static int erFen2(int[] nums,int target){
+        int n = nums.length - 1;
+        int left = 0;
+        int right = n;
+        while (left <= right){
+            int mid = (left + right) / 2;
+            if (nums[mid] < target){
+                left = mid + 1;
+            } else if (nums[mid] > target){
+                right = mid - 1;
+            } else if (nums[mid] == target){
+                return mid;
+            }
+        }
+        return -1;
+    }
     public static void main(String[] args) {
 //        System.out.println(1/2);
-//        int[] nums = {1,2,3,4,5,6};
-//        System.out.println(erFen(nums,1));
-        int a = Integer.MAX_VALUE;
-        System.out.println(a);
+        int[] nums = {1,2,3,4,5,6,7,8,9};
+        System.out.println(erFen2(nums,5));
     }
 }
