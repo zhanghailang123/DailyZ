@@ -34,8 +34,36 @@ public class LengthOfLCIS {
         return re;
     }
 
+    /**
+     * 动态规划的解法
+     * 动态规划的思想是连续的，也就是说上一个状态和下一个状态之间是有关系且联系的
+     * 状态转移方程
+     *
+     * @param nums
+     * @return
+     */
+    public static int solution2(int[] nums){
+        int n = nums.length;
+        if (n == 0 || n == 1){
+            return n;
+        }
+        int[] dp = new int[n];
+        dp[0] = 1;
+        int res = 0;
+        for (int i = 1; i < n; i++){
+            if (nums[i] > nums[i-1]){
+                dp[i] = dp[i-1] + 1;
+            } else {
+                dp[i] = 1;
+            }
+            res = Math.max(res,dp[i]);
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
-        int[] nums = {2,1,3,5,6,4,7};
+        int[] nums = {2,1,2,3,5,6,4,7};
         System.out.println(solution1(nums));
+        System.out.println(solution2(nums));
     }
 }
