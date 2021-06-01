@@ -1,9 +1,11 @@
 package swordtooffer;
 
+
 import java.util.*;
 
 /**
  * @description: 二叉树的右视图
+ * https://leetcode-cn.com/problems/binary-tree-right-side-view/solution/jian-dan-bfsdfs-bi-xu-miao-dong-by-sweetiee/
  * @author: zhanghailang
  * @date: 2021-5-31 13:53
  */
@@ -99,5 +101,22 @@ public class RightVersionTree {
             }
         }
         return re;
+    }
+    static List<Integer> re = new ArrayList<>();
+    public static List<Integer> depthSearch2(TreeNode root){
+
+        dfs(root,0);
+        return re;
+    }
+    private static void dfs(TreeNode root, int depth){
+        if (root == null){
+            return;
+        }
+        if (depth == re.size()){
+            re.add(root.val);
+        }
+        depth ++;
+        dfs(root.right,depth);
+        dfs(root.left,depth);
     }
 }
