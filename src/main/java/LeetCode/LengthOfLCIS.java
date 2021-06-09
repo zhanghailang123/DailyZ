@@ -1,5 +1,8 @@
 package LeetCode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @description: https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence/
  * 最长连续递增序列
@@ -65,5 +68,49 @@ public class LengthOfLCIS {
         int[] nums = {2,1,2,3,5,6,4,7};
         System.out.println(solution1(nums));
         System.out.println(solution2(nums));
+        lengthOfLongestSubstring("pwwkew");
+    }
+
+    public static int lengthOfLongestSubstring(String s) {
+        int n = s.length();
+        if(n == 0){
+            return 0;
+        }
+        Map<Character,Integer> map = new HashMap<>();
+        int left = 0, right = 0,res = 0;
+        while(right < n){
+            if(!map.containsKey(s.charAt(right))){
+                map.put(s.charAt(right),right);
+                res = Math.max(res,right - left + 1);
+
+            }   else {
+                map.put(s.charAt(right),right);
+                left = Math.max(map.get(s.charAt(right)) + 1,left);
+                res = Math.max(res,right - left + 1);
+            }
+            // if(map.containsKey(s.charAt(right))){
+            //     left = Math.max(left,map.get(s.charAt(right)) + 1);
+            // }
+            // map.put(s.charAt(right),right);
+            res = Math.max(res,right - left + 1);
+            right ++;
+        }
+        return res;
+
+
+
+//         if (s.length()==0) return 0;
+//         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+//         int max = 0;
+//         int left = 0;
+//         for(int i = 0; i < s.length(); i ++){
+//             if(map.containsKey(s.charAt(i))){
+//                 left = Math.max(left,map.get(s.charAt(i)) + 1);
+//             }
+//             map.put(s.charAt(i),i);
+//             max = Math.max(max,i-left+1);
+//         }
+//         return max;
+
     }
 }

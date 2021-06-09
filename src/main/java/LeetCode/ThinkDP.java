@@ -34,6 +34,7 @@ public class ThinkDP {
     /**
      * 备忘录式解法
      * 避免重复计算问题
+     * 张海浪 你是真的菜 还没脑子啊
      * @param n
      * @return
      */

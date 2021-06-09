@@ -1,6 +1,7 @@
 package swordtooffer;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * @description: LRU缓存
@@ -133,5 +134,9 @@ public class LRUCache {
             this.key = key;
             this.val = val;
         }
+    }
+
+    public static void main(String[] args) {
+//        LinkedHashMap
     }
 }

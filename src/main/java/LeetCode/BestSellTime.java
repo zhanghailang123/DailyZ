@@ -1,5 +1,11 @@
 package LeetCode;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Stack;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * @description:
  * LeetCode 121
@@ -119,5 +125,24 @@ public class BestSellTime {
 //        System.out.println(solution(nums,2));
 //        System.out.println(solution1(nums));
         System.out.println(dpSolution1(nums));
+
+        Map map = new HashMap(2);
+        map.put("1","1");
+        map.put("2","1");
+        map.put("3","1");
+        map.put("4","1");
+        map.put("5","1");
+        map.put("6","1");
+        map.put("7","1");
+        map.put("8","1");
+        map.get(1);
+        System.out.println((4 - 1) & 51);
+        ReentrantLock lock = new ReentrantLock();
+        String s = "We are happy.";
+        String re = s.replaceAll(" ","%20");
+        System.out.println(re);
+        Stack stack = new Stack();
+        stack.peek();
+//        LinkedList
     }
 }

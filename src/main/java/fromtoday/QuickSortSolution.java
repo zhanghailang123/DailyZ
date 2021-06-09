@@ -38,4 +38,23 @@ public class QuickSortSolution {
         arr[left] = pivot;
         return left;
     }
+
+
+    public static int solution(int[] arr, int left,int right){
+        int privot = arr[left];
+        while (left < right){
+            while (left < right && arr[right] >= privot){
+                right--;
+                arr[left] = arr[right];
+            }
+            while (left < right && arr[left] <= privot){
+                left ++;
+                arr[right] = arr[left];
+            }
+        }
+        arr[left] = privot;
+        return left;
+    }
+
+
 }
