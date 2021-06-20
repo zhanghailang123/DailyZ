@@ -16,6 +16,13 @@ public class QuickSortSolution {
         quickSort(arr,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
     }
+
+    /**
+     * 归并排序和快速排序
+     * @param arr
+     * @param left
+     * @param right
+     */
     public static void quickSort(int[] arr,int left,int right){
         int middle;
         if(left < right){
@@ -39,7 +46,23 @@ public class QuickSortSolution {
         return left;
     }
 
-
+    public static int solution1(int[] arr,int left,int right){
+        int pivot = arr[left];
+        while (left < right){
+            while (left < right && arr[right] >= pivot){
+                right --;
+            }
+            arr[left] = arr[right];
+            while (left < right && arr[left] <= pivot){
+                left ++;
+            }
+            arr[right] = arr[left];
+        }
+        // arr[left] = pivot;
+        arr[left] = pivot;
+        //此处为啥要返回left
+        return left;
+    }
     public static int solution(int[] arr, int left,int right){
         int privot = arr[left];
         while (left < right){

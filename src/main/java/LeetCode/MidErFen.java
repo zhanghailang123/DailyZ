@@ -79,4 +79,29 @@ public class MidErFen {
         int[] nums = {1,2,3,4,5,6,7,8,9};
         System.out.println(erFen2(nums,5));
     }
+
+    /**
+     * 测试写着玩的
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int erFenT(int[] nums,int target){
+        int left = 0;
+        int right = nums.length;
+        return -1;
+    }
+
+    public int digui(int left,int right,int[]nums,int target){
+        int mid = (right - left) / 2;
+        if (nums[mid] == target){
+            return mid;
+        }
+        int a = digui(left,mid,nums,target);
+        int b = digui(mid,right,nums,target);
+        if (a >= 0 || b >= 0 ){
+            return a >= 0 ? a : b;
+        }
+        return -1;
+    }
 }
