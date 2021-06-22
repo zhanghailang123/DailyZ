@@ -1,6 +1,8 @@
 package LeetCode;
 
 
+import java.util.HashMap;
+
 /**
  * @description: leetcode上部分关于滑动窗口解法的题目
  * @author: zhanghailang
@@ -103,6 +105,7 @@ public class SlipWindow {
     }
     public static void main(String[] args) {
         int[] nums = {2,3,1,2,4,3};
+        HashMap hashMap = new HashMap(16);
         System.out.println(minLenOfArray(nums,6));
         System.out.println(minLenOfArray1(nums,6));
         System.out.println(minLenOfArray3(nums,7));

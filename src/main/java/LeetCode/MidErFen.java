@@ -7,7 +7,7 @@ import jdk.nashorn.internal.ir.IfNode;
  * @author: zhanghailang
  * @date: 2021-5-19 13:17
  */
-public class MidErFen {
+public class  MidErFen {
     public static int erFen(int[] nums,int target){
 
         int left = 0;
