@@ -46,7 +46,7 @@ public class NoRepeatString {
 
 
     public static int solution2(String s){
-
+        return 1;
     }
 
     public static void main(String[] args) {

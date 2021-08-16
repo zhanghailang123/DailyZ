@@ -55,6 +55,19 @@ public class ThinkDP {
         return (int) inMap.get(n);
     }
 
+    public static int dpsolution1(int n){
+        if (n == 1){
+            return 1;
+        }
+        if (n == 2){
+            return 2;
+        }
+        if (inMap.containsKey(n)){
+            return (int) inMap.get(n);
+        }
+        inMap.put(n,dpsolution1(n-1) + dpsolution1(n-2));
+        return (int) inMap.get(n);
+    }
 
     /**
      * 动态规划式解法。

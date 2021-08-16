@@ -44,7 +44,7 @@ public class TreeNodeToList {
 //
 //         }
         if (root == null){
-            return null;
+            return ;
         }
     }
 
