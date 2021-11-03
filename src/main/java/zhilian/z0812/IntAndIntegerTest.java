@@ -1,5 +1,8 @@
 package zhilian.z0812;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+
 /**
  * @description: https://mp.weixin.qq.com/s/6fk40V04iw__orZjlI_Peg
  * @author: zhanghailang
@@ -15,10 +18,14 @@ public class IntAndIntegerTest {
     public static void main(String[] args) {
         Integer i = 100;
         Integer j = 100;
-        System.out.println( i == j);
+        System.out.println(i == j);
         //-128  -127
         Integer m = 128;
         Integer n = 128;
-        System.out.println( m == n);
+        System.out.println(m == n);
+
+//        ThreadPoolExecutor executor = new Fix();
+        Executors.newFixedThreadPool(5);
     }
+
 }
