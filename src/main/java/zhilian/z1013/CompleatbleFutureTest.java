@@ -1,5 +1,7 @@
 package zhilian.z1013;
 
+import org.springframework.util.Base64Utils;
+
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.LongAdder;
 
 /**
  * @description:  https://mp.weixin.qq.com/s/EXm0QyNdhLckI-WADXxupA
@@ -43,5 +46,8 @@ public class CompleatbleFutureTest {
 //        TimeUnit.SECONDS.sleep(5000);
         System.out.println("在异步的时候可不可以做一些其他的事");
         Thread.currentThread().join();
+
+        LongAdder adder = new LongAdder();
+        adder.increment();
     }
 }
