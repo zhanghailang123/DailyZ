@@ -7,6 +7,7 @@ package zhilian.z1215;
  */
 public class DeepStuThreadLocal {
 
+    private String a = "";
     public static void main(String[] args) {
         DeepStuThreadLocal test = new DeepStuThreadLocal();
 
@@ -31,4 +32,8 @@ public class DeepStuThreadLocal {
         return "test";
     }
 
+
+    public void setA(String a){
+        this.a = a;
+    }
 }
