@@ -11,5 +11,14 @@ public class TestCopyOnWrite {
 
     public static void main(String[] args) {
         CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+//        new CopyOnWriteArrayList<>()
+//        CopyOnWriteArrayList.class.g
+        Thread thread = new Thread();
+
+        int i = 1;
+        i ++;
+        System.out.println(i);
+
+        ThreadLocal<String> local = ThreadLocal.withInitial(() -> "zzz");
     }
 }
