@@ -19,6 +19,8 @@ import java.util.concurrent.atomic.LongAdder;
  */
 public class CompleatbleFutureTest {
     public static void main(String[] args) throws InterruptedException {
+        //JVM
+
 //        ExecutorService executorService = Executors.newFixedThreadPool(10);
 ////        CompletableFuture.runAsync( ()->{
 ////

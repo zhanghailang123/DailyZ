@@ -27,6 +27,14 @@ public class DeepStuThreadLocal {
     //Thread function 引用类型 静态内部类 ThreadLocalMap 内存泄漏问题  解决Hash冲突--》开放定址法
     //应用实例
     //升级版ThreadLocal FastThreadLocal
+
+    //被讨厌的勇气
+    //专注
+    //KeepT
+    //温和而坚定的人
+    //Dont lie to yourself
+    //热爱 love
+    //勇敢去面对 不要逃避 要想着如何解决 发脾气解决不了问题
     private String getString(){
         return "test";
     }
