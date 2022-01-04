@@ -36,6 +36,7 @@ public class DeepStuThreadLocal {
     //Dont lie to yourself
     //热爱 love
     //勇敢去面对 不要逃避 要想着如何解决 发脾气解决不了问题
+    //做一个心思纯粹的人
     private String getString(){
         return "test";
     }
