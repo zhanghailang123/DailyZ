@@ -71,6 +71,15 @@
             <artifactId>jol-core</artifactId>
             <version>0.16</version>
         </dependency>
+
+
+        <!-- CGlib -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
