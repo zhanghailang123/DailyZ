@@ -1,5 +1,6 @@
 package zhilian.z220105;
 
+
 import org.springframework.cglib.proxy.Enhancer;
 
 /**
@@ -11,6 +12,8 @@ import org.springframework.cglib.proxy.Enhancer;
 public class ASMTest {
 
     public static void main(String[] args) {
+        //需要整合的一些知识 由点到面
+        //
         //首先来测试下CGlib的使用
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(HelloServiceImpl.class);
