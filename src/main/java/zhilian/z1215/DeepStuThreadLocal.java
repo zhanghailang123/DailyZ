@@ -23,7 +23,7 @@ public class DeepStuThreadLocal {
     }
     //被讨厌的勇气
     //courage to be hated
-    //冷静 努力 专注 集中 冷静努力专注集中 专注 努力 集中
+    //冷静 努力 专注 集中 冷静努力专注集中 专注 努力 集中 冷静 专注 努力 集中
     //作用
     //Thread function 引用类型 静态内部类 ThreadLocalMap 内存泄漏问题  解决Hash冲突--》开放定址法
     //应用实例
@@ -38,6 +38,7 @@ public class DeepStuThreadLocal {
     //勇敢去面对 不要逃避 要想着如何解决 发脾气解决不了问题
     //做一个心思纯粹的人
     //持续地关注自我意识和情绪
+    //持续地关注自我意识和情绪 自我监视 抓住自己最轻微细节的情绪
     //持续地关注自我意识和情绪 自我监视 抓住自己最轻微细节的情绪
     //职业规划 生命中有哪些是对我重要的事情
     private String getString(){

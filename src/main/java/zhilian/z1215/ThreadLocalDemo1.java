@@ -34,6 +34,7 @@ public class ThreadLocalDemo1 {
     }
     // 冷静 集中 专注 努力
     // 冷静 集中 专注 努力
+    // 冷静 集中 专注 努力
     private void method4(){
         //do something
         //处理map中的信息
