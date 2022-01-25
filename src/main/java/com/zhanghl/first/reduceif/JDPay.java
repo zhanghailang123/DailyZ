@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
  * @author: zhanghailang
  * @date: 2021-2-24 14:10
  */
-@PayCode(value = "JD",name = "京东支付")
-@Service
+@PayCode(value = "jd",name = "京东支付")
+@Service(value = "jdPay")
 public class JDPay implements IPay{
     @Override
     public void pay() {

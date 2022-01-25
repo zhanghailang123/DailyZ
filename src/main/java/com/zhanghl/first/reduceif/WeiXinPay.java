@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
  * @author: zhanghailang
  * @date: 2021-2-24 14:09
  */
-@PayCode(value = "weixin",name = "微信支付")
+@PayCode(value = "weiXin",name = "微信支付")
 @Service
 public class WeiXinPay implements IPay {
     @Override
