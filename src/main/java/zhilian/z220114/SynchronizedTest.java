@@ -1,5 +1,6 @@
 package zhilian.z220114;
 
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -21,7 +22,12 @@ public class SynchronizedTest {
 
 class TicketConsumer implements Runnable {
 
+    /**
+     * 请注意这个Integer类型
+     */
     private volatile static Integer ticket;
+
+    private ConcurrentHashMap<Integer,Integer> locks = new ConcurrentHashMap<>();
 
     public TicketConsumer(int ticket) {
         this.ticket = ticket;
@@ -31,7 +37,9 @@ class TicketConsumer implements Runnable {
     public void run() {
         while (true) {
             System.out.println(Thread.currentThread().getName() + "开始抢第 " + ticket + "张票，对象加锁之前：" + System.identityHashCode(ticket));
-            synchronized (ticket) {
+//            synchronized (ticket) {
+            //正确的做法
+            synchronized (getCacheSyncObject(ticket)) {
                 System.out.println(Thread.currentThread().getName() + "抢到第" + ticket + "张票，成功锁到的对象：" + System.identityHashCode(ticket));
                 if (ticket > 0) {
                     try {
@@ -45,5 +53,10 @@ class TicketConsumer implements Runnable {
                 }
             }
         }
+    }
+
+    private Object getCacheSyncObject(final Integer id) {
+        locks.putIfAbsent(id,id);
+        return locks.get(id);
     }
 }
