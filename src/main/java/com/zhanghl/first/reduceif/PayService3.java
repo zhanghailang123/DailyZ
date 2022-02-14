@@ -21,7 +21,6 @@ public class PayService3 implements ApplicationContextAware {
 
     public void toPay(String payCode){
         ((IPay)applicationContext.getBean(getBeanName(payCode))).pay();
-        System.out.println(applicationContext.getBean(getBeanName(payCode)) + "111");
     }
     public String getBeanName(String payCode){
         return payCode + SUFFIX;

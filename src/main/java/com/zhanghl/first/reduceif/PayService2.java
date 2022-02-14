@@ -30,7 +30,6 @@ public class PayService2 implements ApplicationListener<ContextRefreshedEvent> {
     }
 
     public void pay(String code){
-        System.out.println(payMap.get(code) + "zzzz");
         payMap.get(code).pay();
     }
 }

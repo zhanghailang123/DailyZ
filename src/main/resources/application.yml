@@ -6,4 +6,4 @@ spring:
       url: jdbc:postgresql://172.17.5.141:5432/gig_contract
       username: deliver_zhaopin
       password: deliver_zhaopin
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: org.postgresql.Driver

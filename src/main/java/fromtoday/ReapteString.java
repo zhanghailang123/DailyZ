@@ -34,7 +34,7 @@ public class ReapteString {
     }
 
     /**
-     * 不含有重复字符的最长字串
+     * 不含有重复字符的最长子串
      * @param s
      * @return
      */
@@ -59,5 +59,16 @@ public class ReapteString {
     public static void main(String[] args) {
         System.out.println(ReapteString.lengthOfLongest("abcdeef"));
         System.out.println(ReapteString.lenthOfStr("abcdeff"));
+    }
+
+    public static int lengthOfStr126(String s) {
+        int left = 1;
+        int right = 1;
+        int end = s.length();
+        int res = 0;
+        for (int i = 1; i <= end; i ++) {
+
+        }
+        return 0;
     }
 }

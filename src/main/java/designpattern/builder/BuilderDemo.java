@@ -1,7 +1,7 @@
 package designpattern.builder;
 
 /**
- * @description:
+ * @description:建造者模式
  * @author: zhanghailang
  * @date: 2022/1/18 11:31
  */
@@ -20,5 +20,8 @@ public class BuilderDemo {
         System.out.println("Total Cost :" + nonVegMeal.getCost());
 
         System.out.println(50.1f + 3.6f);
+
+        //build yourself
+        ThreadLocal<String> local = new ThreadLocal<>();
     }
 }
