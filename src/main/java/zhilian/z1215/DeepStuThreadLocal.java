@@ -41,6 +41,7 @@ public class DeepStuThreadLocal {
     //持续地关注自我意识和情绪 自我监视 抓住自己最轻微细节的情绪
     //持续地关注自我意识和情绪 自我监视 抓住自己最轻微细节的情绪
     //职业规划 生命中有哪些是对我重要的事情
+    //认真工作
     private String getString(){
         return "test";
     }
