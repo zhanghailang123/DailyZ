@@ -23,11 +23,11 @@ public class ScoreQueryService {
         return result;
     }
 
-    private Integer loadFromDB(String userName) {
+    public synchronized Integer loadFromDB(String userName) {
         System.out.println("开始查询：" + userName + "的分数");
         //模拟耗时
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -47,7 +47,12 @@ public class ScoreQueryService {
         ExecutorService executorService = Executors.newFixedThreadPool(5);
         for (int i = 0; i < 3; i++) {
             executorService.execute(() -> {
-                Integer zy = service.query("zy");
+                Integer zy = service.loadFromDB("zy");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("zy = " + zy);
             });
         }
