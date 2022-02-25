@@ -1,9 +1,6 @@
 package zhilian.z220222;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 /**
  * @description: Future相关的学习
@@ -14,14 +11,36 @@ import java.util.concurrent.Future;
 public class FutureAboutsTest {
 
     public static void main(String[] args) {
+//        ExecutorService executorService = Executors.newFixedThreadPool(5);
+//        Future<?> future = executorService.submit(() -> {
+//            System.out.println("zy is a han han");
+////            return "zzzzzz";
+//        });
+//
+//        try {
+//            System.out.println(future.get() + "-----返回");
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        }
         ExecutorService executorService = Executors.newFixedThreadPool(5);
-        Future<?> future = executorService.submit(() -> {
-            System.out.println("zy is a han han");
-//            return "zzzzzz";
-        });
+        for (int i = 0; i < 5; i++) {
+            executorService.execute(() ->{
+                FutureAboutsTest.testu();
+            });
+        }
 
+    }
+
+    public static void testu() {
+        FutureTask testFuture = new FutureTask<String>(() -> {
+            TimeUnit.SECONDS.sleep(5);
+            return "zzzz";
+        });
+        testFuture.run();
         try {
-            System.out.println(future.get() + "-----返回");
+            System.out.println("返回结果 ：" + testFuture.get());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

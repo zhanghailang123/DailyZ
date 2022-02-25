@@ -1,7 +1,7 @@
 package zhilian.z220222;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.Map;
+import java.util.concurrent.*;
 
 /**
  * @description:
@@ -10,14 +10,25 @@ import java.util.concurrent.Executors;
  */
 public class FutureMainTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ScoreQueryService service = new ScoreQueryService();
         ExecutorService executorService = Executors.newFixedThreadPool(5);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 1; i++) {
             executorService.execute(() -> {
-               Integer re =  service.query("ZHL");
+                Integer re = null;
+                try {
+                    re = service.query("ZHL");
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("分数：" + re);
             });
+        }
+        TimeUnit.SECONDS.sleep(1);
+        for (Map.Entry<String, Future<Integer>> stringFutureEntry : ScoreQueryService.SCORE_CACHE.entrySet()) {
+            stringFutureEntry.getValue().cancel(true);
         }
     }
 }

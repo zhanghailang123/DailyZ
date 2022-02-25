@@ -1,6 +1,5 @@
 package zhilian.z220222;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.*;
 
@@ -12,49 +11,72 @@ import java.util.concurrent.*;
  */
 public class ScoreQueryService {
 
-    private final Map<String,Integer> SCORE_CACHE = new HashMap<>();
+    public static final Map<String,Future<Integer>> SCORE_CACHE = new ConcurrentHashMap<>();
 
-    public Integer query(String userName) {
-        Integer result = SCORE_CACHE.get(userName);
-        if (result == null) {
-            result = loadFromDB(userName);
-            SCORE_CACHE.put(userName,result);
+    public Integer query(String userName) throws ExecutionException, InterruptedException {
+//        Future<Integer> result = SCORE_CACHE.get(userName);
+//        if (result == null) {
+//            Thread.sleep(5000);
+//            Callable<Integer> callable = () -> this.loadFromDB(userName);
+//            FutureTask futureTask = new FutureTask(callable);
+//            result = futureTask;
+//            futureTask.run();
+//            SCORE_CACHE.putIfAbsent(userName,futureTask);
+//        }
+//        return result.get();
+        while (true) {
+            Future<Integer> future = SCORE_CACHE.get(userName);
+            if (future == null) {
+                Callable<Integer> callable = () -> loadFromDB(userName);
+                FutureTask futureTask = new FutureTask<>(callable);
+                future = SCORE_CACHE.putIfAbsent(userName,futureTask);
+                if (future == null) {
+                    future = futureTask;
+                    futureTask.run();
+                }
+            }
+//            System.out.println(SCORE_CACHE.size() + " :  剩余任务数");
+            try {
+                return future.get();
+            } catch (CancellationException e) {
+                System.out.println("查询userName = " + userName + " 的任务被移除");
+                SCORE_CACHE.remove(userName,future);
+            } catch (Exception e) {
+                throw e;
+            }
+
         }
-        return result;
     }
 
-    public synchronized Integer loadFromDB(String userName) {
+    public Integer loadFromDB(String userName) throws InterruptedException {
         System.out.println("开始查询：" + userName + "的分数");
         //模拟耗时
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        TimeUnit.SECONDS.sleep(3);
+
         return ThreadLocalRandom.current().nextInt(380,420);
     }
 
-    public static void main(String[] args) {
-//        Future
-//        FutureTask
-        ScoreQueryService service = new ScoreQueryService();
-//        Integer score = service.query("张三");
-//        System.out.println("张三score = " + score);
-//        Integer score2 = service.query("张三");
-//        System.out.println("张三score = " + score2);
-
-        //开始变形
-        ExecutorService executorService = Executors.newFixedThreadPool(5);
-        for (int i = 0; i < 3; i++) {
-            executorService.execute(() -> {
-                Integer zy = service.loadFromDB("zy");
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("zy = " + zy);
-            });
-        }
-    }
+//    public static void main(String[] args) {
+////        Future
+////        FutureTask
+//        ScoreQueryService service = new ScoreQueryService();
+////        Integer score = service.query("张三");
+////        System.out.println("张三score = " + score);
+////        Integer score2 = service.query("张三");
+////        System.out.println("张三score = " + score2);
+//
+//        //开始变形
+//        ExecutorService executorService = Executors.newFixedThreadPool(5);
+//        for (int i = 0; i < 3; i++) {
+//            executorService.execute(() -> {
+//                Integer zy = service.loadFromDB("zy");
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                System.out.println("zy = " + zy);
+//            });
+//        }
+//    }
 }
