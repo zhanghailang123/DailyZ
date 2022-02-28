@@ -5,6 +5,7 @@ import java.util.concurrent.*;
 /**
  * @description: Future相关的学习
  * https://mp.weixin.qq.com/s?__biz=Mzg3NjU3NTkwMQ==&mid=2247505139&idx=1&sn=a179eb62e2555e5be198bcecde217f67&chksm=cf32b901f8453017f5f169ac394dd6db348b6ef5b2163bcdb6a13277e80e518ff0a058683b61&scene=21#wechat_redirect
+ * https://mp.weixin.qq.com/s/bnItRL-z-Pak8Diup3lZGw
  * @author: zhanghailang
  * @date: 2022/2/22 0022 22:34
  */
@@ -24,6 +25,7 @@ public class FutureAboutsTest {
 //        } catch (ExecutionException e) {
 //            e.printStackTrace();
 //        }
+
         ExecutorService executorService = Executors.newFixedThreadPool(5);
         for (int i = 0; i < 5; i++) {
             executorService.execute(() ->{

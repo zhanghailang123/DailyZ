@@ -1,4 +1,4 @@
-package zhilian.z220222;
+package Web;
 
 import java.util.Map;
 import java.util.concurrent.*;
@@ -6,13 +6,13 @@ import java.util.concurrent.*;
 /**
  * @description:
  * @author: zhanghailang
- * @date: 2022/2/22 0022 21:48
+ * @date: 2022/2/26 0022 21:48
  */
 public class ScoreQueryService {
 
     public static final Map<String,Future<Integer>> SCORE_CACHE = new ConcurrentHashMap<>();
 
-    public Integer query(String userName) throws ExecutionException, InterruptedException {
+    public Integer query(String userName) throws ExecutionException, InterruptedException, TimeoutException {
 //        Future<Integer> result = SCORE_CACHE.get(userName);
 //        if (result == null) {
 //            Thread.sleep(5000);
@@ -36,7 +36,9 @@ public class ScoreQueryService {
             }
 //            System.out.println(SCORE_CACHE.size() + " :  剩余任务数");
             try {
-                return future.get();
+//                boolean flag = future.cancel(true);
+//                System.out.println("移除标记为：" + flag);
+                return future.get(1,TimeUnit.SECONDS);
             } catch (CancellationException e) {
                 System.out.println("查询userName = " + userName + " 的任务被移除");
                 SCORE_CACHE.remove(userName,future);
@@ -50,9 +52,15 @@ public class ScoreQueryService {
     public Integer loadFromDB(String userName) throws InterruptedException {
         System.out.println("开始查询：" + userName + "的分数");
         //模拟耗时
-        TimeUnit.SECONDS.sleep(3);
+//        TimeUnit.SECONDS.sleep(10);
+        while (true) {
+//            if (1 == 2) {
+//                return 1111 ;
+//            }
+            System.out.println(1+1);
+        }
 
-        return ThreadLocalRandom.current().nextInt(380,420);
+//        return ThreadLocalRandom.current().nextInt(380,420);
     }
 
 //    public static void main(String[] args) {
