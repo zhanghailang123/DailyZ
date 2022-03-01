@@ -29,10 +29,10 @@ public class FutureMainTest {
 //                    e.printStackTrace();
 //                }
                 Callable callable = () -> {
-                    while (true) {
+                    while (!Thread.currentThread().isInterrupted()) {
 //                        TimeUnit.SECONDS.sleep(1);
                         System.out.println(1+1);
-                        if (1 + 1 != 2 || Thread.currentThread().isInterrupted() ) {
+                        if (1 + 1 != 2 ) {
                             break;
                         }
                     }
