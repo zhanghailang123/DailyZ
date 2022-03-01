@@ -13,6 +13,7 @@ public class FutureMainTest {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ScoreQueryService service = new ScoreQueryService();
+
         ExecutorService executorService = Executors.newFixedThreadPool(5);
         for (int i = 0; i < 3; i++) {
             Future<Integer> result = executorService.submit(() -> {
@@ -29,13 +30,14 @@ public class FutureMainTest {
 //                }
                 Callable callable = () -> {
                     while (true) {
-                        System.out.println(" 1 + 1");
-                        if (1+ 1 != 2) {
+//                        TimeUnit.SECONDS.sleep(1);
+                        System.out.println(1+1);
+                        if (1 + 1 != 2 || Thread.currentThread().isInterrupted() ) {
                             break;
                         }
                     }
 //                    TimeUnit.SECONDS.sleep(10);
-                    return "1111";
+                    return "11111";
                 };
                 FutureTask<Integer> future = new FutureTask<Integer>(callable);
                 future.run();
@@ -49,6 +51,7 @@ public class FutureMainTest {
             }
 
         }
+//        CompletableFuture.runAsync().
 //        TimeUnit.SECONDS.sleep(1);
 //        for (Map.Entry<String, Future<Integer>> stringFutureEntry : ScoreQueryService.SCORE_CACHE.entrySet()) {
 //            stringFutureEntry.getValue().cancel(true);

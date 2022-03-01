@@ -15,9 +15,10 @@ public class FutureTest {
         AtomicInteger integer = new AtomicInteger();
         ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(2, 5, 60, TimeUnit.SECONDS, new LinkedBlockingQueue<>(10));
         Future<AtomicInteger> future = poolExecutor.submit(() -> {
-            System.out.println("张海浪的成神之路");
+            System.out.println("zzzz");
             //在这里进行逻辑计算
             integer.set(5201314);
+
         },integer);
         System.out.println("future的内容：" + future.get());
 //        Thread.currentThread().join();

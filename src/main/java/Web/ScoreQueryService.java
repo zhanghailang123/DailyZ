@@ -24,6 +24,7 @@ public class ScoreQueryService {
 //        }
 //        return result.get();
         while (true) {
+
             Future<Integer> future = SCORE_CACHE.get(userName);
             if (future == null) {
                 Callable<Integer> callable = () -> loadFromDB(userName);
