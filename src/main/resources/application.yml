@@ -7,3 +7,15 @@ spring:
       username: deliver_zhaopin
       password: deliver_zhaopin
       driver-class-name: org.postgresql.Driver
+    redis:
+      host: localhost
+      port: 6379
+#      cluster:
+#        nodes:
+#          - 172.17.90.50:6379
+#          - 172.17.90.51:6379
+#          - 172.17.90.52:6379
+#        max-redirects: 1
+#      lettuce:
+#        pool:
+#          max-wait: 1
