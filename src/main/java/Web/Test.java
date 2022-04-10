@@ -1,5 +1,7 @@
 package Web;
 
+import java.util.concurrent.atomic.LongAdder;
+
 public class Test {
     public static void main(String[] args) {
 
@@ -16,6 +18,8 @@ public class Test {
         } catch (Exception e) {
             System.out.println("22222222222");
         }
+
+        LongAdder longAdder = new LongAdder();
 
     }
 

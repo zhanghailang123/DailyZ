@@ -1,5 +1,7 @@
 package com.zhanghl.first.z220207.bytedance;
 
+import java.util.PriorityQueue;
+
 /**
  * @description: javaassist test
  * @author: zhanghailang
@@ -8,6 +10,7 @@ package com.zhanghl.first.z220207.bytedance;
 public class JavaassistTest {
 
     public static void main(String[] args) {
-        Classp
+//        Classp
+        PriorityQueue<Object> queue = new PriorityQueue<>();
     }
 }
