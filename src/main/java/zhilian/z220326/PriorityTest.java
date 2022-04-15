@@ -1,5 +1,8 @@
 package zhilian.z220326;
 
+import cn.hutool.core.date.DateUtil;
+
+import java.util.Date;
 import java.util.PriorityQueue;
 import java.util.Random;
 
@@ -21,8 +24,13 @@ public class PriorityTest {
 //            System.out.println(a);
 //        }
 
-        for (int i = 0; i < 7; i++) {
-            System.out.println(queue.poll());
-        }
+//        for (int i = 0; i < 7; i++) {
+//            System.out.println(queue.poll());
+//        }
+
+//        System.out.println(DateUtil.dayOfWeekEnum(new Date()).getValue());
+//        System.out.println(DateUtil.yesterday().toString("yyyy-MM-dd"));
+        System.out.println(DateUtil.lastWeek().toString("yyyy-MM-dd"));
+        System.out.println(DateUtil.formatDate(new Date()));
     }
 }
