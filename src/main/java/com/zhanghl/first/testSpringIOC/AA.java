@@ -1,8 +1,10 @@
-package com.zhanghl.first.test;
+package com.zhanghl.first.testSpringIOC;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 
 /**
  * @description:
@@ -19,4 +21,9 @@ public class AA {
     private String a = "test zhl";
 
     private String b;
+
+    @PostConstruct
+    private void testPostConstruct() {
+        System.out.println("AA的post注解方法被调用了");
+    }
 }

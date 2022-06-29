@@ -1,4 +1,4 @@
-package com.zhanghl.first.test;
+package com.zhanghl.first.testSpringIOC;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

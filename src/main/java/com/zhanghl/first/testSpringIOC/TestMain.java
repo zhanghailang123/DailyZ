@@ -1,4 +1,4 @@
-package com.zhanghl.first.test;
+package com.zhanghl.first.testSpringIOC;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -10,7 +10,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class TestMain {
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext acc = new AnnotationConfigApplicationContext("com.zhanghl.first.test");
+        //注解扫描类启动Spring容器
+        AnnotationConfigApplicationContext acc = new AnnotationConfigApplicationContext("com.zhanghl.first.testSpringIOC");
         AA aa = (AA) acc.getBean("aa");
         System.out.println(aa.getA());
 
