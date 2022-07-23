@@ -21,5 +21,6 @@ public class Compleable {
         calendar.add(Calendar.DATE, -1);
         System.out.println(DateUtil.beginOfDay(calendar.getTime()));
         System.out.println(DateUtil.beginOfDay(new Date()));
+
     }
 }
