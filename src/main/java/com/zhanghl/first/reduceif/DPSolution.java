@@ -1,6 +1,8 @@
 package com.zhanghl.first.reduceif;
 
 import java.util.Arrays;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class DPSolution {
 
@@ -33,5 +35,8 @@ public class DPSolution {
     public static void main(String[] args) {
         int[] nums = {0,1,0,3,2,3};
         System.out.println(DPSolution.lenthOfLIS(nums));
+
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        System.out.println(Runtime.getRuntime().availableProcessors());
     }
 }
