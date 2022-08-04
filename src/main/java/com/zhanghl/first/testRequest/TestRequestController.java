@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestRequestController {
 
     @GetMapping("/getParam")
+
     public String getParams(String a, String b) {
         return "success";
     }
