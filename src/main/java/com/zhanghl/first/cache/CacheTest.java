@@ -17,7 +17,7 @@ public class CacheTest {
     @Autowired
     private ConcurrentMapCacheManager cacheManager;
 
-    @Cacheable(value = "name", cacheManager = cacheManager)
+    @Cacheable(value = "name", cacheManager = "cacheManager")
     public int cache(String name) {
         return 20;
     }

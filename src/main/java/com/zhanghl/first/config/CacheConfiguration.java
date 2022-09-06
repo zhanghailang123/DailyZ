@@ -30,8 +30,8 @@ import java.util.concurrent.TimeUnit;
 @EnableCaching
 public class CacheConfiguration extends CachingConfigurerSupport {
 
-    @Override
-    public CacheManager cacheManager() {
+    @Bean
+    public ConcurrentMapCacheManager cacheManager() {
         ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager() {
             @Override
             protected Cache createConcurrentMapCache(String name) {
