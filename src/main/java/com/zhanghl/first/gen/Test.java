@@ -5,6 +5,7 @@ import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 
 import javax.lang.model.element.Modifier;
+import java.util.Optional;
 
 /**
  * @author zhanghailang
@@ -23,6 +24,10 @@ public class Test {
                 .build();
 
         javaFile.writeTo(System.out);
+
+        Optional.ofNullable(1).ifPresent(a -> {
+            System.out.println("zzzz");
+        });
     }
 
     private static MethodSpec whatsMyName(String name) {

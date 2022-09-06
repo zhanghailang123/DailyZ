@@ -1,6 +1,7 @@
 package com.zhanghl.first;
 
-import com.zhanghl.first.z220207.RedisTest;
+import com.zhanghl.first.cache.CacheTest;
+//import com.zhanghl.first.z220207.RedisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,18 +20,26 @@ public class TestTransaction {
     public void testTransaction(){
         this.method1();
     }
+//
+//    @Autowired
+//    private RedisTest redisTest;
 
     @Autowired
-    private RedisTest redisTest;
+    private CacheTest cacheTest;
 
-    @Transactional(rollbackFor = Exception.class)
+//    @Transactional(rollbackFor = Exception.class)
     public void method1(){
         System.out.println("test transactional start");
         throw new RuntimeException("test transactional ex");
     }
+//
+//    @GetMapping(value = "/redisTest")
+//    public void redisTest(){
+//        this.redisTest.testHyperLogLog();
+//    }
 
-    @GetMapping(value = "/redisTest")
-    public void redisTest(){
-        this.redisTest.testHyperLogLog();
+    @GetMapping(value = "/testCache")
+    public int testCache(String name){
+        return this.cacheTest.cache(name);
     }
 }

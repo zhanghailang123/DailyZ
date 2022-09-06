@@ -1,9 +1,9 @@
 //package com.zhanghl.first.gen;
 //
-//import com.google.auto.service.AutoService;
-//import com.squareup.javapoet.JavaFile;
-//import com.squareup.javapoet.MethodSpec;
-//import com.squareup.javapoet.TypeSpec;
+import com.google.auto.service.AutoService;
+import com.squareup.javapoet.JavaFile;
+import com.squareup.javapoet.MethodSpec;
+import com.squareup.javapoet.TypeSpec;
 //
 //import javax.annotation.processing.*;
 //import javax.lang.model.SourceVersion;
