@@ -3,6 +3,7 @@ package com.zhanghl.first.cache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
+import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,11 +14,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class CacheTest {
 
+//    @Autowired
+//    private RedisCacheManager redisCacheManager;
+//
+//    @Autowired
+//    private ConcurrentMapCacheManager cacheManager;
 
-    @Autowired
-    private ConcurrentMapCacheManager cacheManager;
-
-    @Cacheable(value = "name", cacheManager = "cacheManager")
+    @Cacheable(value = "name", cacheManager = "redisCacheManager")
     public int cache(String name) {
         return 20;
     }

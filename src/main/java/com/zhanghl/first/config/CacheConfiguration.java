@@ -45,7 +45,7 @@ public class CacheConfiguration extends CachingConfigurerSupport {
         return cacheManager;
     }
 
-    @Bean
+    @Bean(value="redisCacheManager")
     public RedisCacheManager getCacheManager(RedisConnectionFactory factory) {
         RedisCacheManager redisCacheManager =
                 RedisCacheManager.builder(factory)
