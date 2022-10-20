@@ -1,14 +1,12 @@
 package com.zhanghl.first.z220207;
 
-import cn.hutool.core.util.NumberUtil;
+
+import cn.hutool.http.HttpUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+import java.io.File;
+import java.util.Arrays;
 
 /**
  * @description:
@@ -25,11 +23,250 @@ public class TransactionalTest {
     }
 
     public static void main(String[] args) {
-        Double a = 111.0;
-        Double b = 24.33;
-        System.out.println(NumberUtil.round((a+b),2));
-//        ThreadPoolExecutor executor = new ThreadPoolExecutor(5,5,5, TimeUnit.SECONDS,new ArrayBlockingQueue<Long>(100));
-        ReentrantLock lock = new ReentrantLock();
-        Condition condition = lock.newCondition();
+        String urls = "https://storage-public.zhaopin.cn/innovation/gig/1665392523627446849/all_q_download_2def3a1d642c4e5b970be5d2cb647655.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392536801742624/all_q_download_7b857b22d48d4f4aa1e21b306d79a1e1.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392543723600739/all_q_download_864410a2c73a4850b512539757cb1304.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392549436205759/all_q_download_9b7ccca003d04141bb8be8c3110c61ef.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392552936418557/all_q_download_2579649b63454eebbb1749413538f9b4.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392556296258071/all_q_download_93d5f7eb53cc48458d5a13748753a771.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392559159996512/all_q_download_9071a26be7d6435699e8aef34ad2fbf4.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392562027308025/all_q_download_b3dd32da14394d559856c31e6556d10e.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392564722060442/all_q_download_f8c258ce7da0479392d3abd6cc94670a.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392654660672472/all_q_download_db977fed690c4747aba8fe9e8a1bda6d.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392657736138884/all_q_download_a2e30964761a41ba88f032d612676573.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392660880001190/all_q_download_ba93740f6dd6482d9c6440b93a948693.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392663545775383/all_q_download_8816a9f15167401eb4d1e7216307f4e0.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392665627295621/all_q_download_911a579dced9407e9040354d090dbc10.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392667459101025/all_q_download_89df0090744147aa8921b276cdc2e7c4.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392669563884416/all_q_download_12d66abb938c46fabfe23b75c33f5043.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392671426770907/all_q_download_43331fd41beb447182fe4e6c245ce5aa.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392673303693651/all_q_download_8c3055bc940d4a769cdddaa1fe1fb3d1.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392675313418031/all_q_download_72658a4c131346629363bf09442ce4ff.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392677274204299/all_q_download_c50d77d1c9764e6da17f23bdb38952e1.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392679257782043/all_q_download_f5681f81169742d1b77e7952a589ec29.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392681391243843/all_q_download_8481a481a6244c6188b8231931afaff2.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392683229360965/all_q_download_17a58a2f95ad47f08be151fe420ae290.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392685212211770/all_q_download_63de8fd195c74d019c915463c713a1d1.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392687273003657/all_q_download_a6f7d43601c84eb6bf0557113e712c44.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392693221194388/all_q_download_4f3162930e9c4dfd9e524dbf80e29e8c.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392701351362246/all_q_download_20e10f74a8d44a158fa98d71c6f77cc6.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392705279745818/all_q_download_16bcd3eb840244b99cbc79b391085421.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392709308074967/all_q_download_fe37c79ecc334d128a47dbcddfcb3d7a.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392711631748928/all_q_download_438692b069bf45d5a30f9c0c69f5dbbe.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392689257691829/all_q_download_1ac5323e4210450cbad43bd471dfcd70.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392691301533056/all_q_download_ba21329a5056446c839bb0b56cc8ab5a.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392695306783223/all_q_download_f1e13c797b644564816eebf98f5fd945.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392697360230901/all_q_download_b26ae8f666fe409dba98810082404bb7.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392699289878823/all_q_download_7a018380046048b8b6f42182e4ef86d2.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392703326791678/all_q_download_fa3c5e1ff0c54c278fd3979b02a09e98.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392707401010677/all_q_download_15e72a344dfc41dd867e83d51c8e6ae5.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392713304195081/all_q_download_9856dde24f054e8ba88ca5ed80cadda0.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392720404711212/all_q_download_11d68707f20f44dc9e5306815cac8911.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392724461204490/all_q_download_2d8c211f5405450e9c732991caccabec.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392726481251122/all_q_download_1ace5672fc434e6ead81050fac49f85e.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392715336749900/all_q_download_61f1d3995a304e10b39b97e9f3efadd1.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392718296210809/all_q_download_b92f746e38b2448cbb7d3fcae9adc3d5.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392722353028691/all_q_download_6c745b9dd8d948eda3f435e8f2d43ebd.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392728244122848/all_q_download_45cd652b08a1485cab20e9ee22bcaf28.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392730308887019/all_q_download_d965815990cc40b6a24aeb525e178421.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392732318561396/all_q_download_87840ed7af834d1aaade636f2d9af508.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392734671429794/all_q_download_8c640ee48ecc4a04ac303df8afc9d8e3.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392736416783720/all_q_download_ed0e3587d3b24908b1b81db785ba9132.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392738477012354/all_q_download_9dd80451f867467fba9970c30ffb3852.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392740442964752/all_q_download_58597d85a2044985916de3ece50a21ae.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392742327610992/all_q_download_f2559670e31241fe9b10a636d3d6283a.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392744447841636/all_q_download_9dea03dff8e04eefb9b848b392026564.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392746326099393/all_q_download_61a99199af9848298adf7aff857ca6e1.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392748365555535/all_q_download_185f1b639abb4c5f9af7aa671eb127b3.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392750390387925/all_q_download_b4cd2eab45de418f99059f4fac3ce743.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392752526242248/all_q_download_a41b6c8dadd941b19f2fc9eb782977af.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392760558791806/all_q_download_7fc47f178ab74393beaecda55c816266.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392766502564233/all_q_download_2847746645f74b1990f9bace2cc52806.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392768651287552/all_q_download_af97a0a31320476d9ffaa8db13cd04d1.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392772531015549/all_q_download_39713bcdbdf746d8bd75fbd534c9577c.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392774527114309/all_q_download_36c395889589429e8dae77916e8cdf11.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392776623980884/all_q_download_422afa59a8854d2ca734a077914b98bb.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392778445965804/all_q_download_9ed2f257b1dd4d48b1d6fffb030b3047.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392780567153892/all_q_download_243dae4986274413aeb1541de93377d4.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392782542401810/all_q_download_eb6b506de10f428aade5b0eabfa5e1fb.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392784502044950/all_q_download_62ccc5eb32a343739a7f7109791a8212.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392786530874594/all_q_download_bcab9958fe9e476d86f189a3ea9d75c2.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392788483924889/all_q_download_ff7f493cad554171a59f57020789729d.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392833268603072/all_q_download_26a38634796445f09ea603bba6fc3604.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392754535082915/all_q_download_ea4f9edc44b249a88f9860035421ad09.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392756692628646/all_q_download_9af07fac1fce4592b848fce116b98a22.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392758575415045/all_q_download_10a63bb2112242c89d3b186879573031.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392762544640940/all_q_download_147f63d6ae2c48e4bcc8918aa9ae58ff.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392764577442662/all_q_download_467006f390fe449787f6374c91cc6124.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392770638993293/all_q_download_255d5b29365f4ef2a3d2cf1627e4f45a.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392790663372399/all_q_download_12c9877b4941475f909b8dcf4789f915.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392792666634884/all_q_download_47b9f59e888b4c71a3b57eba6139f4af.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392794502390977/all_q_download_92fb42862f9a4266878be198fe546ca0.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392795494213800/all_q_download_cb78975eebb34f97a28caec7a8f417f0.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392796469095429/all_q_download_0667166605b541fe9077187ce15af404.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392797406778590/all_q_download_646dbaebcd1840d689832276cd9623f2.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392798423513744/all_q_download_3414c8dd8fed4770915a4ec2fdb12146.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392799377579013/all_q_download_e9d29910f9094798b8b5e55906e3ba78.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392800388129724/all_q_download_e29bc7410ea14a3b966a0c75a9e6a05e.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392801402371777/all_q_download_7d9378a57c4e4f6695f68a9a9f3ae231.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392802390632511/all_q_download_2f126d47228b4d19a19ae5ec80bbd6d7.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392803382542005/all_q_download_294d8f07bf9c4af1b5f327cc5f909496.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392804365823874/all_q_download_bfa293f7b49f42e1980559081b37a53d.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392805438067278/all_q_download_508a55dcc1ac41bba4b138c5b8dde168.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392806343354972/all_q_download_2386a97bb596468fa563b0f97fa402a6.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392807393761072/all_q_download_bcda9be97a6e4c848ec908b3a8a883fa.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392808352261148/all_q_download_d0979b98cb20452188d313c2fb906a98.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392809345080070/all_q_download_a01d1c2572d949f58a545c7f9d813c7c.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392810449465614/all_q_download_f6f662b4c2844ac29023325f8b8e7a25.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392811367038909/all_q_download_5f7056fa0b084ca198b5a7f15b408dab.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392812308859708/all_q_download_16441cbafcf9492299fc722afd96b790.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392813315414314/all_q_download_758056b4e431461a88ecc451a907353b.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392814331951267/all_q_download_fcc438740a2b419694e747d6c2209d1c.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392815330857398/all_q_download_1dc7f5673eb945a9b519c4055fdead02.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392816259301937/all_q_download_35b4aa5ec4f544f9b506d46dcc217cc0.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392817380512169/all_q_download_f66f8763bd584b34974db05a2b362111.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392818269749274/all_q_download_d5ec5c4704b74234a812128404750b4c.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392819238897833/all_q_download_ff8a8b92a2564f5db560a7947628e95a.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392820308649144/all_q_download_09eb5aa447d241a8bd25b63527c3ff3f.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392821241200013/all_q_download_4122e12b872d43ef8efb826c68c1bb8f.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392822405344429/all_q_download_293cae7df21847138158e21b91e59e4b.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392823249290678/all_q_download_43bc35ee483a4368883cc4d23ddca0eb.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392824410280493/all_q_download_34c8071025d44bf680c4a572cd0514fe.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392825255697468/all_q_download_9e4326d5389b413dae703439ee38f457.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392826258895231/all_q_download_3ecbcffda7f24aee8406891a2a9241c5.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392827265672899/all_q_download_6c00683527eb4eef8febab64395716e2.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392828256215147/all_q_download_ca24c664cf374c0c97bbfa496157f8d4.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392829304599649/all_q_download_c561c65d184447c3abd0c9cf2ff3590b.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392830273875223/all_q_download_0f96718dc6fd4f32aba58f9216997a94.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392831270706014/all_q_download_2115677e26e84f4d9a530bcfdaed6a49.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392832250051952/all_q_download_ad2b1b0117d54c489f69db5b939ac5ec.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392834273322828/all_q_download_8f50069786e24880afca42f3ce621114.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392835322795021/all_q_download_42223ef8a8d8405193c6bcd97119dbda.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392836290681014/all_q_download_2faecacae8064b0cb5323c73f2e5b842.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392837303769967/all_q_download_83b0d5c9161f422c8909da5b32f17f8a.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392838317862081/all_q_download_dd8dd5d2a0154858b88204cfb1ddc6ae.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392839317573095/all_q_download_785ca31506b348e3a7428f82f1fb51fa.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392840385562954/all_q_download_e3411a534a2040e4b1c8547e88a99e29.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392841364684237/all_q_download_ae53c9b7157a44b388906d2823613c59.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392842343518885/all_q_download_c41720ae898345a49bb7ccecb8887660.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392843335888577/all_q_download_69209271452148f1b059c41d46ebe29f.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392844332337618/all_q_download_db46600c3dcd428991f2ebc8529913e7.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392845392363283/all_q_download_42c64faae68b43d58208f82ffcc27af9.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392846388145504/all_q_download_80e115d883984cc3af5858f23ab71472.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392847358677769/all_q_download_b84f814a27214ea78208025c343c85db.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392848379114524/all_q_download_0e6b6e998a0847f4bc57b752a48f4749.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392849371444412/all_q_download_ba267dd5508a461f9c0d1b4cd46a9811.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392850383569339/all_q_download_feaa0da750334c9bbe7b86737e5b76ea.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392851405826946/all_q_download_8226a5e5822e4395a58a37cef0971591.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392852411249108/all_q_download_db93feed920d45d4b4f9649b0f70caae.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392853393581329/all_q_download_c94dba3cc2b64f47838ff775964432d2.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392854528007903/all_q_download_aa4810ff60fa408eb6c0182efa0ba9a6.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392855412121500/all_q_download_2a8a24091e1e48cea3197994df0a81fa.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392856406087952/all_q_download_a1b4fc880e8a432395834cfff65a146d.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392857433114960/all_q_download_257c8f479fd5497dbecd49fe25aedf45.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392858454279670/all_q_download_e09972043a82468582fe363b2b9a4fff.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392859574261935/all_q_download_1695033b79ba439ea6f60cb72ee4814c.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392860447773318/all_q_download_646fe2c4509a461d845285ac48eafe0f.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392861438307192/all_q_download_a0a6aed367c54ac18f3ea4f83b7d18da.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392862499552622/all_q_download_761369366e804ed5b03edf39a5b5af98.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392863461153684/all_q_download_ea6b10a676884a5b831c17af5a0ff981.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392864482341981/all_q_download_a9bb51f1f7274f1b91b161d4639e14f8.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392865446523060/all_q_download_1b2f482513e04920a354c938482cc3fa.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392866538345244/all_q_download_5429705234544e6488f5dd483d2c6487.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392867499296800/all_q_download_f8d808af8b2f4f2891d8a3a3ae85aa32.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392868482594464/all_q_download_4aa95e15f93e4d8ebe41d8752c1cfd09.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392869495709474/all_q_download_02b663ae1de5473b93e250abda78297c.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392870536781757/all_q_download_618c6a9d8e4b48c9a427a35b71c30829.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392871576410127/all_q_download_a594264240114d73a98b54484ed9ea13.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392872517273918/all_q_download_1c1fb6f80c48453ba54da9c412355969.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392873540233879/all_q_download_8d55144907284e019d9ac8ab56aa6a3c.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392874523431080/all_q_download_45ffdbc8c9cf4fc0b36022b8cd6c3cb1.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392875550599120/all_q_download_f0e08fbd229a46048cd0b6ebf48ee202.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392876549536367/all_q_download_1c2bd83593c04d6597462ce88fd0dcf9.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392877577160510/all_q_download_1b6ee7ff9f1d43e58abe5593dc1c1b8f.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392878558156482/all_q_download_5138994891144a10aa0bac49968cb867.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392879559888451/all_q_download_b4b3e4b123fa4633a9aafe1dc0028c2e.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392880575126062/all_q_download_b45b4ec141634feaa8b83549a5bd94d8.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392881612354546/all_q_download_b35fc08044e347ccb5c3cf7fc5bb9b67.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392882592643667/all_q_download_9afee306201c49c88a056fc4ea3c5cc5.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392883540244979/all_q_download_e4d0c647a4a24282b9c2ba3d86add08a.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392884543745231/all_q_download_c50683de7a544df69de10ef1e6056706.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392885552211622/all_q_download_6281624d8b0b4301bbb1aca481198367.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392886681092128/all_q_download_596b90a912ae4eeb9429f8436a78e2d5.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392887594192423/all_q_download_63c2bd430dc54c53a82fd292b71a0ead.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392888677656603/all_q_download_bb487d081893478088f3886d79809b43.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392889641118503/all_q_download_1db151b66c66467b883097897f1dc25d.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392890676425433/all_q_download_917650fbca0b47baa899a45a10bea68c.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392891637632503/all_q_download_c7fcfdbb5a8d40529ceace9dd6179905.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392892671134763/all_q_download_43081d46f1d2417ea05c60a0307d6cfb.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392893636475637/all_q_download_b121ccabc42246adba6780c1b049729f.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392894608855486/all_q_download_f61ba5b630a4442ba50f1e7a2551b65a.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392895636033169/all_q_download_c3cee99eeb314e43bc783ca9cbcdfbc1.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392896703026530/all_q_download_5bfb6d1903d540e1b1fbd73b4cfa2c5f.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392897701146404/all_q_download_79047b64049a4401bb22da571c1c61db.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392898698116356/all_q_download_0411100faf6a49abb8596edf9c199651.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392899699861160/all_q_download_96fb0a37361f410f8ab7a054e6038e12.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392900759474055/all_q_download_543c24f331144a6aa7f7e1e8e1b21b4c.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392901639008181/all_q_download_a1cf66c9673a4f6c8e8654081da36ea5.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392902727396954/all_q_download_8212cabfb44f49b9a34a3c1c55124b3a.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392903796237717/all_q_download_1d933cb47c454d2f9cf99c8a84b89adc.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392905827979192/all_q_download_492cedccb233466e827847394055d990.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392907738895174/all_q_download_d2e4f825c04c42fca0a6756b23331c70.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392910494531880/all_q_download_2bf0255559434d84afeb9d4629a1a6eb.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392913408917549/all_q_download_b876a1faf05f4e118ab811075eeb34bb.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392914836770291/all_q_download_2b8dc7671264465faba1b0b97b2e4dff.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392926186390828/all_q_download_74d7645bd602474dade95891f1b2e244.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392931327048839/all_q_download_63e74330568148679a4a4eac156a5ee5.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392937228566463/all_q_download_9c05f1d59a684aa7af21065e0e91389a.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392939238988648/all_q_download_0bb3d6bcffc24d36933e5516e30471fc.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392943143276018/all_q_download_692e7de8cd8646558d878fd0ff670261.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392961892719342/all_q_download_c34b4f4ddf254fd584958e28b15d2ca5.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392979353675556/all_q_download_b3792750a3184bfdbf6157bb22ca9bad.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392983225264376/all_q_download_4a40d1e2567548a4bb196d6adb393a02.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392990265124037/all_q_download_4e4aa61f44404fb1b5754a23c5f2f597.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392994291392216/all_q_download_bf2a9954ae1c4a349374a85edff9213c.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665393003534837239/all_q_download_ac7377c498554ddaaa3973ed96855a04.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665393018844176598/all_q_download_6c888a66b8d644d4bea8449fda2475bb.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665393020563720929/all_q_download_b3c7bdf8797c4d67b0369788a68356ab.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392916284525680/all_q_download_aedaaf599f6441429712cf45ef314de2.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392918180631968/all_q_download_fe53788aa45c4b759b2a59e1254183cb.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392920251169955/all_q_download_326d19d8d9544e85a457b18c95ad59c9.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392921640519025/all_q_download_3d598fa5dbc14d72a4c5bb371ab1a488.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392924176265178/all_q_download_d369ad317fb0400f8a6b5e6da46e9af8.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392928964550350/all_q_download_f6af28b455b84f6c846bbf88dce58c5c.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392932841442316/all_q_download_adb51b06598f4f86aa3527f19d07bae5.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392935607299650/all_q_download_52f6bd1b61c447e3864e415ce39afe02.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392941335813712/all_q_download_87745209bf91434ca2da294f5dbae6d9.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392944415144597/all_q_download_1553a2d2160e4e0bbd038fee589b4b3e.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392945544981528/all_q_download_8329d025cd9b48659a283267423ec736.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392947604911563/all_q_download_7e28a39d0c8242039c66546239597dbb.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392950857770370/all_q_download_18c01d7bf81e4aef8951cbeec516084f.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392963526874597/all_q_download_22ebaacb16ec4c47be2041de1ee1fc26.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392964572632885/all_q_download_409338d3c0b440bda84e3406b1f270c3.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392966428138755/all_q_download_3779bfbc601c4198a59960a312c728c2.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392967780196831/all_q_download_dc237b30236b4a8d9b3193eaed0120e3.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392969079104943/all_q_download_b44b012e7f7d43f2ba72e4939a414b17.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392971432057607/all_q_download_df192712ff15485e89d09f32d1f85e82.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392972348086765/all_q_download_23b9b78eae0341169abadc6ac95341ba.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392974289710623/all_q_download_454421848a2f4ec0b6d2791e0309ba76.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392977657054910/all_q_download_c05db9ffe6de469cb57ff97053cbcd9d.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392981252678118/all_q_download_285d1aac99f44f82b91f718965b5b44e.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392984455106191/all_q_download_a6029de065d647e2a53ab596afc630d1.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392986169271388/all_q_download_c55c43edfb614cdebe5367a995b970a6.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392988937162459/all_q_download_85ec9238ec4b4dd9bf166966d2166a3e.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392992357189223/all_q_download_8fa60ac1baad43ea88cfa45c11c6300d.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392996306296699/all_q_download_9466ae2442a14309af35389ce5610dab.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392997851093234/all_q_download_9a58f6f30e70452ea4b6e8fae78fb37b.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665392999448053085/all_q_download_1850af3377c2412e922e2abb1be38ad9.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665393001545158925/all_q_download_c40849fe0c304b1c90cb4a52e91f1a19.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665393005831146679/all_q_download_9cf1f4accfc64e2ab9ba6aa75a33cb71.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665393007299766246/all_q_download_892b2a3b53194013874cd751b2a82aa4.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665393009096344583/all_q_download_06dd411e34f04f21be3a31ff03431e46.xlsx,\n" +
+                "https://storage-public.zhaopin.cn/innovation/gig/1665393010748534959/all_q_download_409735de681544fb89f1daa67a3c1951.xlsx\n";
+
+        Arrays.stream(urls.split(",")).map(String :: trim).forEach(a -> {
+            File file = new File("D:\\answer\\");
+            HttpUtil.downloadFile(a, file);
+        });
     }
 }

@@ -6,6 +6,7 @@ import io.vavr.control.Try;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 public class GCTest {
 
     public static void main(String[] args) {
+//        Optional.ofNullable("test").map()
         byte[] allocation1, allocation2;
         allocation1 = new byte[309000*1024];
 
