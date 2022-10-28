@@ -1,5 +1,10 @@
 package com.zhanghl.first.z220207;
 
+import cn.hutool.core.date.DatePattern;
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUnit;
+import cn.hutool.core.date.DateUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,17 +16,7 @@ import java.util.List;
 public class TestLambda {
 
     public static void main(String[] args) {
-        List<String> str1 = new ArrayList<>();
-        List<String> str2 = new ArrayList<>();
-        str2.add("z");
-        str2.add("h");
-        str2.add("y");
-
-        str2.stream().forEach(a -> {
-            List<String> str3 = new ArrayList<>();
-            str3.add("zzzzz");
-            str1.addAll(str3);
-        });
+        System.out.println();
 
     }
 }
