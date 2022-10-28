@@ -11,6 +11,9 @@ public class JavaassistTest {
 
     public static void main(String[] args) {
 //        Classp
+        //是否需要搞一个项目出来啊
         PriorityQueue<Object> queue = new PriorityQueue<>();
+        //选型是个啥呢
+
     }
 }
