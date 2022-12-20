@@ -44,11 +44,14 @@ public class DealBankServiceImpl {
 
     public static void main(String[] args) {
 //        Dese.idCardNum("",4, 4);
-        LinkedList<LinkedList<Integer>> linkedLists = new LinkedList<>();
-        linkedLists.removeLast();
-        LinkedList<Integer> test = new LinkedList<>();
-        test.add(1);
-        linkedLists.add(test);
-        System.out.println(linkedLists);
+//        LinkedList<LinkedList<Integer>> linkedLists = new LinkedList<>();
+//        linkedLists.removeLast();
+//        LinkedList<Integer> test = new LinkedList<>();
+//        test.add(1);
+//        linkedLists.add(test);
+//        System.out.println(linkedLists);
+        String s = "11111";
+        String substring = s.substring(0, 2);
+        System.out.println(substring);
     }
 }
