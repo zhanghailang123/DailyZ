@@ -1,7 +1,10 @@
 package zhilian.z0807;
 
+import org.springframework.data.relational.core.sql.In;
+
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.LinkedList;
 
 /**
  * @description:
@@ -40,12 +43,12 @@ public class DealBankServiceImpl {
     }
 
     public static void main(String[] args) {
-        String value = "_zzz_YYYY_dakjh   p";
-        System.out.println(String.format("%-" + 5 + "s", value.toString()).replace(' ','_'));
-        String str=null;
-
-        str=String.format("Hi,%s", "飞龙");          // 格式化字符串
-
-        System.out.println(str);
+//        Dese.idCardNum("",4, 4);
+        LinkedList<LinkedList<Integer>> linkedLists = new LinkedList<>();
+        linkedLists.removeLast();
+        LinkedList<Integer> test = new LinkedList<>();
+        test.add(1);
+        linkedLists.add(test);
+        System.out.println(linkedLists);
     }
 }

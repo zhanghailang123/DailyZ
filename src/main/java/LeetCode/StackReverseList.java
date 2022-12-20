@@ -19,14 +19,17 @@ public class StackReverseList {
             node = node.next;
         }
         Node pop = stack.pop();
+        //为什么要重新定义一个result呢  5 4 3 2 1
         Node result = pop;
         while (!stack.empty()){
 //            Node temp = stack.pop();
 //            pop.next = temp;
             pop.next = stack.pop();
             pop = pop.next;
+            pop.next = null;
+            System.out.println(pop);
         }
-        pop.next = null;
+
 
         return result;
 
@@ -74,22 +77,36 @@ public class StackReverseList {
         User11 user = new User11();
         user.setUsername("张三");
         user.setAge(22);
+
+        User11 wangwu = new User11();
+        wangwu.setUsername("王五");
+        wangwu.setAge(28);
+
         User11 lisi;
         lisi = user;
         user.setAge(25);
-        user.setUsername("ksdjakj;djk;a");
+        user.setUsername("张三换名字了");
 
-        lisi.setUsername("李四");
-        User12 user12 = new User12();
-        user12.setUsername("里面的名字呀");
-        lisi.setUser12(user12);
+//        lisi.setUsername("李四");
+//        User12 user12 = new User12();
+//        user12.setUsername("里面的名字呀");
+//        lisi.setUser12(user12);
 
+        user = wangwu;
+        System.out.println(user);
+        System.out.println(lisi);
 
+        user.setUsername("就将计就计");
         System.out.println(user);
         System.out.println(lisi);
 
 
-        int[] arrays = {1,2,3};
+        int[] arrays = {1,2,3,4,5};
         StackReverseList.buildNodeList(arrays);
+        Node node = ReverseList(StackReverseList.buildNodeList(arrays));
+        while (node != null) {
+            System.out.println(node.val);
+            node = node.next;
+        }
     }
 }

@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 public class TestZ {
 
     public static void main(String[] args) {
-        System.out.println(DateUtil.current(false));
+//        System.out.println(DateUtil.current(false));
         //are you right?
         try {
             throw new RuntimeException("test ex");
