@@ -1,6 +1,5 @@
 package com.zhanghl.first.retry;
 
-import cn.hutool.core.util.StrUtil;
 
 /**
  * @description:
@@ -12,7 +11,7 @@ public class RetryTest {
         String a = "http:s1dasda";
         String replace = a.replace("http", "https");
         System.out.println(replace);
-        System.out.println(StrUtil.removePrefix("http", a));
+//        System.out.println(StrUtil.removePrefix("http", a));
         System.out.println(a);
     }
 }
