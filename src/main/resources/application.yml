@@ -6,10 +6,14 @@ logging:
     root: debug
 spring:
     datasource:
-      url: jdbc:postgresql://172.17.5.141:5432/gig_contract
-      username: deliver_zhaopin
-      password: deliver_zhaopin
-      driver-class-name: org.postgresql.Driver
+#      url: jdbc:postgresql://172.17.5.141:5432/gig_contract
+#      username: deliver_zhaopin
+#      password: deliver_zhaopin
+#      driver-class-name: org.postgresql.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/ruyuan_eshop_order_0?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+        username: root
+        password: root
     redis:
       host: localhost
       port: 6379
