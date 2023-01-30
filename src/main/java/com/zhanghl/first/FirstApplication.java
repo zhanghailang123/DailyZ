@@ -1,6 +1,7 @@
 package com.zhanghl.first;
 
 import com.zhanghl.first.reduceif.PayService2;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -9,9 +10,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
-@ServletComponentScan
+//@ServletComponentScan
 @EnableCaching
 @EnableAsync
+@MapperScan("com.zhanghl.first.dao")
 public class FirstApplication {
 
     public static void main(String[] args) {

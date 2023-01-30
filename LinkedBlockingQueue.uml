@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>java.util.concurrent.LinkedBlockingQueue</OriginalElement>
+  <nodes>
+    <node x="0.0" y="156.0">java.util.AbstractCollection</node>
+    <node x="122.50000000000003" y="78.0">java.util.Collection</node>
+    <node x="41.50000000000003" y="234.0">java.util.AbstractQueue</node>
+    <node x="245.50000000000003" y="234.0">java.util.concurrent.BlockingQueue</node>
+    <node x="228.00000000000003" y="156.0">java.util.Queue</node>
+    <node x="208.75000000000003" y="312.0">java.util.concurrent.LinkedBlockingQueue</node>
+    <node x="131.50000000000003" y="0.0">java.lang.Iterable</node>
+    <node x="452.5" y="234.0">java.io.Serializable</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.util.concurrent.LinkedBlockingQueue" target="java.util.AbstractQueue" relationship="GENERALIZATION">
+      <point x="-58.25" y="-14.0" />
+      <point x="267.0" y="292.0" />
+      <point x="133.50000000000003" y="292.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.BlockingQueue" target="java.util.Queue" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="339.0" y="209.0" />
+      <point x="322.5" y="209.0" />
+      <point x="31.5" y="14.0" />
+    </edge>
+    <edge source="java.util.Queue" target="java.util.Collection" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="291.0" y="131.0" />
+      <point x="235.00000000000003" y="131.0" />
+      <point x="37.5" y="14.0" />
+    </edge>
+    <edge source="java.util.Collection" target="java.lang.Iterable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.LinkedBlockingQueue" target="java.util.concurrent.BlockingQueue" relationship="REALIZATION">
+      <point x="58.25" y="-14.0" />
+      <point x="383.5" y="292.0" />
+      <point x="428.0" y="292.0" />
+      <point x="428.0" y="282.0" />
+      <point x="339.0" y="282.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.AbstractQueue" target="java.util.Queue" relationship="REALIZATION">
+      <point x="46.0" y="-14.0" />
+      <point x="179.50000000000003" y="209.0" />
+      <point x="259.5" y="209.0" />
+      <point x="-31.5" y="14.0" />
+    </edge>
+    <edge source="java.util.AbstractQueue" target="java.util.AbstractCollection" relationship="GENERALIZATION">
+      <point x="-46.0" y="-14.0" />
+      <point x="87.50000000000003" y="209.0" />
+      <point x="104.0" y="209.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.AbstractCollection" target="java.util.Collection" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="104.0" y="131.0" />
+      <point x="160.00000000000003" y="131.0" />
+      <point x="-37.5" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.LinkedBlockingQueue" target="java.io.Serializable" relationship="REALIZATION">
+      <point x="58.25" y="-14.0" />
+      <point x="383.5" y="292.0" />
+      <point x="428.0" y="292.0" />
+      <point x="428.0" y="282.0" />
+      <point x="517.0" y="282.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="291.0" y="170.0" />
+  <SelectedNodes>
+    <node>java.util.concurrent.BlockingQueue</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
