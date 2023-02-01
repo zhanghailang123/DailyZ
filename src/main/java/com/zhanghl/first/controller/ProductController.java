@@ -27,12 +27,12 @@ public class ProductController {
 
     @GetMapping("/test")
     public void testProduct() {
-        CountDownLatch countDownLatch = new CountDownLatch(1000);
-        for (int i = 0; i < 1000; i++) {
+        CountDownLatch countDownLatch = new CountDownLatch(10);
+        for (int i = 0; i < 10; i++) {
             new Thread(() -> {
                 try {
                     countDownLatch.await();
-                    this.productService.sellProduct();
+                    this.productService.sellProduct("");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

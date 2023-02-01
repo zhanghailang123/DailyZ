@@ -25,18 +25,18 @@ public class UserInfo implements BeanPostProcessor, BeanFactoryAware, BeanNameAw
 
 //    @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        System.out.println("Bean容器后续处理，允许修改Bean的定义");
+//        System.out.println("Bean容器后续处理，允许修改Bean的定义");
     }
 //
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("Bean后续处理Before");
+//        System.out.println("Bean后续处理Before");
         return BeanPostProcessor.super.postProcessBeforeInitialization(bean, beanName);
     }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("Bean后续处理after");
+//        System.out.println("Bean后续处理after");
         return BeanPostProcessor.super.postProcessAfterInitialization(bean, beanName);
     }
 

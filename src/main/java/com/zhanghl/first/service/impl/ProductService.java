@@ -3,6 +3,7 @@ package com.zhanghl.first.service.impl;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.ruyuan.consistency.annotation.ConsistencyTask;
 import com.zhanghl.first.dao.test.OrderMapper;
 import com.zhanghl.first.model.entity.test.Order;
 import com.zhanghl.first.model.entity.test.Product;
@@ -36,13 +37,14 @@ public class ProductService extends ServiceImpl<ProductMapper, Product> implemen
     private static ReentrantLock lock = new ReentrantLock(true);
 
 //    @Transactional(rollbackFor = Exception.class)
+    @ConsistencyTask(id = "test111")
     @Override
-    public void sellProduct() {
+    public void sellProduct(String a) {
 //        lock.lock();
 
 
         try {
-            this.transactionTemplate.execute(transactionStatus -> {
+//            this.transactionTemplate.execute(transactionStatus -> {
                 System.out.println(Thread.currentThread().getName() + " :抢到锁，进入方法");
                 Product product = this.baseMapper.selectById(1);
                 Integer count = product.getCount();
@@ -67,10 +69,10 @@ public class ProductService extends ServiceImpl<ProductMapper, Product> implemen
                 } else {
                     System.out.println(Thread.currentThread().getName() + " : 没库存了");
                 }
-
-                return null;
-
-            });
+//
+//                return null;
+//
+//            });
 
 
         } finally {
