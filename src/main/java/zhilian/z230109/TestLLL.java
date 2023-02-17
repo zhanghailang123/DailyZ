@@ -1,5 +1,6 @@
 package zhilian.z230109;
 
+import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
 
 import java.util.Date;
@@ -11,6 +12,9 @@ import java.util.Date;
  */
 public class TestLLL {
     public static void main(String[] args) {
-        System.out.println(DateUtil.offsetDay(DateUtil.beginOfQuarter(new Date()), -1).toDateStr());
+        DateTime start = DateUtil.offsetDay(DateUtil.beginOfQuarter(new Date()), -1);
+        DateTime end = DateUtil.beginOfQuarter(DateUtil.offsetDay(DateUtil.beginOfQuarter(new Date()), -1));
+        System.out.println(start);
+        System.out.println(end);
     }
 }

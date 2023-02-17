@@ -2,6 +2,8 @@ package com.zhanghl.first.controller;
 
 
 import com.zhanghl.first.service.IProductService;
+import com.zhanghl.first.service.impl.ProductService;
+import com.zhanghl.first.service.impl.ProductService1;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,18 +23,19 @@ import java.util.concurrent.CountDownLatch;
 @RestController
 @RequestMapping("//product")
 public class ProductController {
-
     @Resource
-    private IProductService productService;
+    private ProductService ProductService2;
+    @Resource
+    private ProductService1 productService1;
 
     @GetMapping("/test")
     public void testProduct() {
-        CountDownLatch countDownLatch = new CountDownLatch(10);
-        for (int i = 0; i < 10; i++) {
+        CountDownLatch countDownLatch = new CountDownLatch(1);
+        for (int i = 0; i < 1; i++) {
             new Thread(() -> {
                 try {
                     countDownLatch.await();
-                    this.productService.sellProduct("");
+                    this.ProductService2.sellProduct("");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
