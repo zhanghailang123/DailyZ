@@ -24,7 +24,7 @@ public class ThreadPolicyTest {
             });
         }
 
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
 
         new Thread(() -> {
             try {
@@ -44,8 +44,8 @@ public class ThreadPolicyTest {
                 ((Future<?>) r).cancel(false);
             }
         }
-        //        executorService.shutdown();
-
-
+        //executorService.shutdown();
+        //两两交换链表的节点
     }
+
 }

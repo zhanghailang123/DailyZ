@@ -87,22 +87,23 @@ public class ReverseList {
     }
 
     public static void main(String[] args) {
-//        int[] test = {3,5,8,9,6};
-//        Node node = buildNodeList(test);
-//        Node result = rerverseList(node);
-//        while (result != null){
-//            System.out.println("结果为：" + result.val);
-//            result = result.next;
-//        }
+        int[] test = {1,2,3,4,5};
+        Node node = buildNodeList(test);
+        Node result = rerverseList(node);
+        while (result != null){
+            System.out.println("结果为：" + result.val);
+            result = result.next;
+        }
 
         //确实这样 当一个引用赋值给另一个引用时，另一个引用改变时。会导致一个引用的值也发生变换
-        Node test1  =  new Node(5);
-        test1.next = new Node(6);
+//        Node test1  =  new Node(5);
+//        test1.next = new Node(6);
 //        Node temp = test1;
 
-        Node test2 = test1.next;
-        Node test3 = test1;
-        test1.next = new Node(9);
-        System.out.println(test2.val + "  比较   " + test3.next.val);
+//        Node test2 = test1.next;
+//        Node test3 = test1;
+//        test1.next = new Node(9);
+//        System.out.println(test2.val + "  比较   " + test3.next.val);
     }
 }
+

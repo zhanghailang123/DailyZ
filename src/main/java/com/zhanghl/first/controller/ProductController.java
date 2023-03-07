@@ -43,4 +43,9 @@ public class ProductController {
             countDownLatch.countDown();
         }
     }
+
+    @GetMapping("/testFb")
+    public void testFb(String cmpName) {
+        this.ProductService2.testFB(cmpName);
+    }
 }

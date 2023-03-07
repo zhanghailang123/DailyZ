@@ -1,5 +1,8 @@
 package com.zhanghl.first.service.impl;
 
+import cn.hutool.http.HttpRequest;
+import cn.hutool.http.HttpResponse;
+import cn.hutool.http.HttpUtil;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
@@ -16,7 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -41,7 +46,10 @@ public class ProductService {
     @Transactional(rollbackFor = Exception.class)
 //    @ConsistencyTask(id = "test111", performanceWay = PerformanceEnum.PERFORMANCE_SCHEDULE)
     public void sellProduct(String a) {
-//        lock.lock();
+        //如何在项目中使用简单的责任链模式对项目的业务进行编排 怎么防止复杂业务的侵入
+        //但是有时候可能最好是无状态的 有状态的维护比较复杂 而且会有并发问题
+        //状态机和责任链模式的使用 怎么去混点Pr之类的东西
+        //        lock.lock();
         //have a atention
         //
         try {
@@ -70,9 +78,6 @@ public class ProductService {
                 } else {
                     System.out.println(Thread.currentThread().getName() + " : 没库存了");
                 }
-                //如何在项目中使用简单的责任链模式对项目的业务进行编排 怎么防止复杂业务的侵入
-                //但是有时候可能最好是无状态的 有状态的维护比较复杂 而且会有并发问题
-                //状态机和责任链模式的使用 怎么去混点Pr之类的东西
                 return new Product();
             });
         } finally {
@@ -80,5 +85,26 @@ public class ProductService {
 
             System.out.println(Thread.currentThread().getName() + " : 释放锁啦，快来抢");
         }
+    }
+
+    public void testFB(String cmpName) {
+        Map<String, String> header = new HashMap<String,String>();
+        header.put("apikey","uGdbde_E_RNzC6uypZvHMw");
+        Map<String, Object> param = new HashMap<String,Object>();
+        param.put("from ",1);
+        param.put("size ",100);
+        param.put("keyword",cmpName);
+        param.put("apikey","uGdbde_E_RNzC6uypZvHMw");
+        String s = HttpUtil.get("https://data.riskstorm.com//v1/company/search", param);
+
+        System.out.println(s);
+
+//        Map<String, Object> param = new HashMap<String,Object>();
+//        param.put("from ",1);
+//        param.put("91330100716105852F ",100);
+//        param.put("apikey","uGdbde_E_RNzC6uypZvHMw");
+//        String s = HttpUtil.get("https://data.riskstorm.com/v1/company/"+"91330100716105852F"+"/jyyc", param);
+//
+//        System.out.println(s);
     }
 }
