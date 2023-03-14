@@ -24,6 +24,6 @@ public class AA {
 
     @PostConstruct
     private void testPostConstruct() {
-        System.out.println("AA的post注解方法被调用了");
+//        System.out.println("AA的post注解方法被调用了");
     }
 }

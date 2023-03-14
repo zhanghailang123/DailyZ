@@ -1,9 +1,9 @@
 server:
   port: 8099
 # 数据库相关的信息配置 TODO
-logging:
-  level:
-    root: debug
+#logging:
+#  level:
+#    root: debug
 spring:
     datasource:
 #      url: jdbc:postgresql://172.17.5.141:5432/gig_contract

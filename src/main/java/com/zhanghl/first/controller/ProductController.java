@@ -1,6 +1,7 @@
 package com.zhanghl.first.controller;
 
 
+import com.zhanghl.first.model.entity.test.Product;
 import com.zhanghl.first.service.IProductService;
 import com.zhanghl.first.service.impl.ProductService;
 import com.zhanghl.first.service.impl.ProductService1;
@@ -27,6 +28,8 @@ public class ProductController {
     private ProductService ProductService2;
     @Resource
     private ProductService1 productService1;
+//    @Resource
+//    private TestPostConstructServiceImpl postConstructService;
 
     @GetMapping("/test")
     public void testProduct() {
@@ -48,4 +51,9 @@ public class ProductController {
     public void testFb(String cmpName) {
         this.ProductService2.testFB(cmpName);
     }
+
+//    @GetMapping("/testPC")
+//    public void testPostConstruct() {
+//        this.postConstructService.addProduct(new Product());
+//    }
 }

@@ -32,6 +32,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author zhanghailang
  * @since 2023-01-29
  */
+
 @Service(value = "ProductService2")
 public class ProductService {
     @Resource
@@ -88,23 +89,23 @@ public class ProductService {
     }
 
     public void testFB(String cmpName) {
-        Map<String, String> header = new HashMap<String,String>();
-        header.put("apikey","uGdbde_E_RNzC6uypZvHMw");
-        Map<String, Object> param = new HashMap<String,Object>();
-        param.put("from ",1);
-        param.put("size ",100);
-        param.put("keyword",cmpName);
-        param.put("apikey","uGdbde_E_RNzC6uypZvHMw");
-        String s = HttpUtil.get("https://data.riskstorm.com//v1/company/search", param);
-
-        System.out.println(s);
-
+//        Map<String, String> header = new HashMap<String,String>();
+//        header.put("apikey","uGdbde_E_RNzC6uypZvHMw");
 //        Map<String, Object> param = new HashMap<String,Object>();
 //        param.put("from ",1);
-//        param.put("91330100716105852F ",100);
+//        param.put("size ",100);
+//        param.put("keyword",cmpName);
 //        param.put("apikey","uGdbde_E_RNzC6uypZvHMw");
-//        String s = HttpUtil.get("https://data.riskstorm.com/v1/company/"+"91330100716105852F"+"/jyyc", param);
+//        String s = HttpUtil.get("https://data.riskstorm.com//v1/company/search", param);
 //
 //        System.out.println(s);
+
+        Map<String, Object> param = new HashMap<String,Object>();
+        param.put("from ",1);
+        param.put("91330100716105852F ",100);
+        param.put("apikey","uGdbde_E_RNzC6uypZvHMw");
+        String s = HttpUtil.get("https://data.riskstorm.com/v1/company/"+"91330100716105852F"+"/member", param);
+
+        System.out.println(s);
     }
 }
