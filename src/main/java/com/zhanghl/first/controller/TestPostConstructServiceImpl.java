@@ -3,15 +3,10 @@ package com.zhanghl.first.controller;
 import com.zhanghl.first.dao.test.ProductMapper;
 import com.zhanghl.first.model.entity.test.Product;
 import org.springframework.aop.framework.AopContext;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 
 /**
  * @author hailang.zhang
@@ -37,6 +32,9 @@ public class TestPostConstructServiceImpl{
         System.out.println("======================保存商品结束了");
     }
 
+    /**
+     *
+     */
     @Transactional(rollbackFor = Exception.class)
     public void save() {
         //保存业务数据
@@ -57,15 +55,6 @@ public class TestPostConstructServiceImpl{
         //模拟循环数据源  添加product
         for(;;) {
             this.testPostConstructService.addProduct(new Product());
-//            addProduct(new Product());
         }
-
     }
-
-//    @Override
-//    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-//        //模拟循环数据源  添加product
-//        addProduct(new Product());
-//        return bean;
-//    }
 }

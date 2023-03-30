@@ -52,8 +52,8 @@ public class ProductController {
         this.ProductService2.testFB(cmpName);
     }
 
-//    @GetMapping("/testPC")
-//    public void testPostConstruct() {
+    @GetMapping("/testPC")
+    public void testPostConstruct() {
 //        this.postConstructService.addProduct(new Product());
-//    }
+    }
 }
