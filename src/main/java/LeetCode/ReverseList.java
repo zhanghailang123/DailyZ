@@ -51,15 +51,25 @@ public class ReverseList {
 //            head = temp;
 //        }
 //        return result;
-        Node prev = null;
-        Node curr = head;
-        while (curr != null) {
-            head = curr;
-            curr = curr.next;
-            head.next = prev;
-            prev = head;
+//        Node prev = null;
+//        Node curr = head;
+//        while (curr != null) {
+//            head = curr;
+//            curr = curr.next;
+//            head.next = prev;
+//            prev = head;
+//        }
+//        return head;
+        Node pre = null;
+
+        while (head != null) {
+            Node curr = head;
+            pre = curr;
+            curr.next = null;
+            head = head.next;
         }
-        return head;
+
+        return pre;
     }
 
 

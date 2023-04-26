@@ -40,13 +40,21 @@ public class TestAviator {
 
         //settlementDates 格式2022-06-10 18:31:01
 //        List<String> settlementDates = Arrays.asList("2022-01-10 18:31:01", "2022-06-10 18:31:01", "2022-06-10 18:31:01", "2022-03-10 18:31:01","2022-06-10 18:31:01");
-        List<String> settlementDates = Arrays.asList( "2022-06-10 18:31:01", "2022-06-10 18:31:01", "2022-03-10 18:31:01","2022-06-10 18:31:01");
-        //截取前10位到月份 然后去重计数
-        long count = settlementDates.stream().map(a -> a.substring(0, 7)).distinct().count();
-        settlementDates.stream().map(a -> a.substring(0, 7)).forEach(a -> {
-            System.out.println(a);
-        });
+//        List<String> settlementDates = Arrays.asList( "2022-06-10 18:31:01", "2022-06-10 18:31:01", "2022-03-10 18:31:01","2022-06-10 18:31:01");
+//        //截取前10位到月份 然后去重计数
+//        long count = settlementDates.stream().map(a -> a.substring(0, 7)).distinct().count();
+//        settlementDates.stream().map(a -> a.substring(0, 7)).forEach(a -> {
+//            System.out.println(a);
+//        });
+//
+//        System.out.println(count);
 
-        System.out.println(count);
+        int[] res = new int[10];
+        for(int i : res) {
+            System.out.println(i);
+            System.out.println();
+//            i.
+        }
+        //&#x5355;&#x4F8B;&#x6A21;&#x5F0F;
     }
 }
