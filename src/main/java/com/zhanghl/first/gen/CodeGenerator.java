@@ -29,7 +29,7 @@ public class CodeGenerator {
     /**
      * 模块包名
      */
-    private final static String module = "com.zhanghl.first";
+    private final static String module = "com.zhl.example.job";
 
     /**
      * 数据库链接配置
@@ -37,7 +37,7 @@ public class CodeGenerator {
     private final static String jdbcUrl = "jdbc:mysql://localhost:3306/order?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai";
     private final static String jdbcUserName = "root";
     private final static String jdbcPwd = "123456";
-    private final static String moduleName = "test";
+    private final static String moduleName = "job";
 
 
     /**

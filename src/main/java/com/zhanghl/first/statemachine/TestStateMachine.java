@@ -89,7 +89,7 @@ public class TestStateMachine {
     //为什么顺序是这样的呢
     //那么在代码中的应用该是什么样子的呢
     //能够使用Lambda的依据是必须有相应的函数式接口，能够使用Lambda的依据是必须有相应的函数式接口
-    //接下来需要专注的点、Spring三级缓存、分布式锁、Spring的内部流程和原理、泛型、函数式接口
+    //接下来需要专注的点、Spring三级缓存、分布式锁、Spring的内部流程和原理、泛型、函数式接口 
     private static <T> Object put(Map map, T t, Function<? super T, Object> keyExtractor) {
         System.out.println("1111");
        return map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE);
