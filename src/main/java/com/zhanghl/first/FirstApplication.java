@@ -1,6 +1,6 @@
 package com.zhanghl.first;
 
-import com.ruyuan.consistency.annotation.EnableTendConsistencyTask;
+//import com.ruyuan.consistency.annotation.EnableTendConsistencyTask;
 import com.zhanghl.first.reduceif.PayService2;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +15,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableCaching
 @EnableAsync
 @MapperScan("com.zhanghl.first.dao")
-@EnableTendConsistencyTask
+//@EnableTendConsistencyTask
 @EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
 public class FirstApplication {
 
