@@ -183,12 +183,12 @@
             <version>3.3.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.ruyuan</groupId>
-            <artifactId>tend-consistency-core</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.ruyuan</groupId>-->
+<!--            <artifactId>tend-consistency-core</artifactId>-->
+<!--            <version>1.0.0-SNAPSHOT</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>com.googlecode.aviator</groupId>
