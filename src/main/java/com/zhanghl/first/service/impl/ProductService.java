@@ -6,8 +6,6 @@ import cn.hutool.http.HttpUtil;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.ruyuan.consistency.annotation.ConsistencyTask;
-import com.ruyuan.consistency.enums.PerformanceEnum;
 import com.zhanghl.first.dao.test.OrderMapper;
 import com.zhanghl.first.model.entity.test.Order;
 import com.zhanghl.first.model.entity.test.Product;
