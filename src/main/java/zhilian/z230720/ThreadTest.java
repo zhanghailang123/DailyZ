@@ -20,11 +20,11 @@ public class ThreadTest {
         });
 
         Thread a = new Thread(() -> {
-//            try {
-//                b.join();
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
-//            }
+            try {
+                b.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             System.out.println("执行线程a :" + Thread.currentThread().getName());
         });
 
