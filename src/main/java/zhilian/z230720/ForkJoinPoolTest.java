@@ -25,6 +25,7 @@ public class ForkJoinPoolTest {
                 System.out.println(Thread.currentThread().getName() + ": " + new Date());
             });
         }
+//        Thread.yield();
         try {
             Thread.currentThread().join();
         } catch (InterruptedException e) {
