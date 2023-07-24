@@ -21,21 +21,25 @@ public class TransactionalTest {
     }
 
     public static void main(String[] args) {
-        CompletableFuture completableFuture = CompletableFuture.supplyAsync(() -> {
-            System.out.println(1111);
-            return 111;
-        }).thenApply(a -> {
-            System.out.println("then apply 输出" + a);
-            return "2";
-        }).thenApply(b -> {
-            System.out.println("then apply 输出2 " + b);
-            return 1L;
-        });
-
-        try {
-            Thread.currentThread().join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+//        CompletableFuture completableFuture = CompletableFuture.supplyAsync(() -> {
+//            System.out.println(1111);
+//            return 111;
+//        }).thenApply(a -> {
+//            System.out.println("then apply 输出" + a);
+//            return "2";
+//        }).thenApply(b -> {
+//            System.out.println("then apply 输出2 " + b);
+//            return 1L;
+//        });
+//
+//        try {
+//            Thread.currentThread().join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        String s = "123456";
+        for (char c : s.toCharArray()) {
+            System.out.println(c - '0');
         }
     }
 
