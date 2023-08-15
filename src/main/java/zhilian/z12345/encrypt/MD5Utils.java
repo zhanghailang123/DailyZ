@@ -1,10 +1,10 @@
-package zhilian.上上签.encrypt;
+package zhilian.z12345.encrypt;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import static zhilian.上上签.encrypt.HexUtils.byteArrayToHex;
+import static zhilian.z12345.encrypt.HexUtils.byteArrayToHex;
 
 /**
  * @author jozdoo
