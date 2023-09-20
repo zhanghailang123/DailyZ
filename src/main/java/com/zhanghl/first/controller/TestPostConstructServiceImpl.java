@@ -50,7 +50,7 @@ public class TestPostConstructServiceImpl{
     /**
      * 上线前初始化数据
      */
-    @PostConstruct
+//    @PostConstruct
     public void init() {
         //模拟循环数据源  添加product
         for(;;) {

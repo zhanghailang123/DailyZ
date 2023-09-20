@@ -38,7 +38,7 @@ public class ProductController {
             new Thread(() -> {
                 try {
                     countDownLatch.await();
-                    this.ProductService2.sellProduct("");
+                    this.ProductService2.sellProduct();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -49,7 +49,6 @@ public class ProductController {
 
     @GetMapping("/testFb")
     public void testFb(String cmpName) {
-        this.ProductService2.testFB(cmpName);
     }
 
     @GetMapping("/testPC")

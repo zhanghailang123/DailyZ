@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * @author hailang.zhang
  * @since 2023-02-15
  */
-@Service("productService")
+@Service("productService2")
 public class ProductService1 extends ServiceImpl<ProductMapper, Product> implements IProductService {
 
     @Override
