@@ -7,7 +7,9 @@ import com.alibaba.fastjson.JSONObject;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -32,8 +34,8 @@ public class TestL {
             String 一级 = next.getStr("一级");
 
             JobDO job = new JobDO();
-            job.setCode(一级编码1);
-            job.setDesc(一级);
+            job.setStrKey(一级编码1);
+            job.setValue(一级);
             map.put(一级, job);
 
         }
@@ -52,26 +54,28 @@ public class TestL {
 
 
             JobDO job3 = new JobDO();
-            job3.setDesc(三级);
-            job3.setCode(三级编码);
-            job3.setParentCode(二级编码);
+            job3.setValue(三级);
+            job3.setStrKey(三级编码);
+            job3.setParentStrKey(二级编码);
 
             JobDO job = new JobDO();
-            job.setCode(二级编码);
-            job.setDesc(二级);
-            job.setParentCode(一级编码1);
+            job.setStrKey(二级编码);
+            job.setValue(二级);
+            job.setParentStrKey(一级编码1);
 
             if (cache2.containsKey(二级编码)) {
                 job = cache2.get(二级编码);
-                job.getChilds().add(job3);
+                job.getChildren().add(job3);
+                job.setChildren(job.getChildren().stream().distinct().sorted(Comparator.comparing(JobDO :: getStrKey)).collect(Collectors.toCollection(LinkedHashSet::new)));
             } else {
-                job.getChilds().add(job3);
+                job.getChildren().add(job3);
+                job.setChildren(job.getChildren().stream().distinct().sorted(Comparator.comparing(JobDO :: getStrKey)).collect(Collectors.toCollection(LinkedHashSet::new)));
                 cache2.put(二级编码, job);
             }
 
             JobDO aDo = map.get(一级);
-            aDo.getChilds().add(job);
-            aDo.setChilds(aDo.getChilds().stream().distinct().collect(Collectors.toSet()));
+            aDo.getChildren().add(job);
+            aDo.setChildren(aDo.getChildren().stream().distinct().sorted(Comparator.comparing(JobDO :: getStrKey)).collect(Collectors.toCollection(LinkedHashSet::new)));
             map.put(一级, aDo);
         }
 
@@ -92,7 +96,7 @@ public class TestL {
 //        System.out.println(list);
 //        JobDO aDo = list.get(16);
 //        System.out.println(JSONObject.toJSON(aDo));
-        String jsonString = com.alibaba.fastjson.JSONArray.toJSONString(list.stream().distinct().collect(Collectors.toList()));
+        String jsonString = com.alibaba.fastjson.JSONArray.toJSONString(list.stream().distinct().sorted(Comparator.comparing(JobDO :: getStrKey)).collect(Collectors.toList()));
         System.out.println(jsonString);
     }
 }

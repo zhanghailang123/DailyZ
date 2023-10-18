@@ -13,13 +13,14 @@ import java.util.Set;
  */
 @Data
 public class JobDO {
+    private String strKey;
+    private String value;
     private String desc;
-    private String code;
 
-    private String parentCode;
-    private Set<JobDO> childs;
+    private String parentStrKey;
+    private Set<JobDO> children;
 
     public JobDO() {
-        this.childs = new HashSet<>();
+        this.children = new HashSet<>();
     }
 }
