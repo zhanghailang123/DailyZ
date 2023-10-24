@@ -8,8 +8,8 @@ package fromtoday;
 public class VolatileTest {
     public static void main(String[] args) throws InterruptedException {
 //        System.out.println("Thread.activeCount :::" + Thread.activeCount());
-        Thread.ofVirtual().start(() -> {
-            System.out.println(Thread.currentThread());
-        }).join();
+//        Thread.ofVirtual().start(() -> {
+//            System.out.println(Thread.currentThread());
+//        }).join();
     }
 }
