@@ -1,4 +1,4 @@
-package zhilian.z231018.usedesign;
+package zhilian.z231018.usedesign.strategypattern;
 
 /**
  * @author hailang.zhang

@@ -1,7 +1,7 @@
 package zhilian.z231018.usedesign.use;
 
-import zhilian.z231018.usedesign.FlyBehavior;
-import zhilian.z231018.usedesign.QuackBehavior;
+import zhilian.z231018.usedesign.strategypattern.FlyBehavior;
+import zhilian.z231018.usedesign.strategypattern.QuackBehavior;
 
 /**
  * @author hailang.zhang

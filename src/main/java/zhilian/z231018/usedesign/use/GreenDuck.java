@@ -1,7 +1,7 @@
 package zhilian.z231018.usedesign.use;
 
-import zhilian.z231018.usedesign.FlyNoWay;
-import zhilian.z231018.usedesign.Quack;
+import zhilian.z231018.usedesign.strategypattern.FlyNoWay;
+import zhilian.z231018.usedesign.strategypattern.Quack;
 
 /**
  * @author hailang.zhang

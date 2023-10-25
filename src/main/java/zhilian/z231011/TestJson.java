@@ -1,4 +1,8 @@
 package zhilian.z231011;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.parser.Feature;
+import com.google.common.collect.Lists;
+import zhilian.z231011.ContractTypeEnum;
 
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -16,8 +20,17 @@ public class TestJson {
     private static List<DictTreeDTO> jobTree = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
-        TestJson testJson = new TestJson();
-        testJson.parse();
+//        TestJson testJson = new TestJson();
+//        testJson.parse();
+
+        Child2 child2 = new Child2();
+        child2.setLists(Lists.newArrayList());
+        child2.setField2("");
+        child2.setField4("");
+        child2.setContractTypeEnum(ContractTypeEnum.LABOR_DISPATCH);
+
+        System.out.println(JSONObject.parseObject("{\"contractTypeEnum\": \"LABOR_DISPATCH\",\"field2\":\"\",\"field4\":\"\",\"lists\":[]}", Child2.class, Feature.ErrorOnEnumNotMatch));
+        System.out.println(111);
     }
 
     public void parse () throws IOException {

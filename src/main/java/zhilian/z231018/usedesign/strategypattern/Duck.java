@@ -1,4 +1,4 @@
-package zhilian.z231018;
+package zhilian.z231018.usedesign.strategypattern;
 
 /**
  * 练习下策略模式

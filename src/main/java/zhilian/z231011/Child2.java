@@ -3,6 +3,7 @@ package zhilian.z231011;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.alibaba.fastjson.annotation.JSONType;
 import com.alibaba.fastjson.parser.Feature;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import lombok.Data;
 import lombok.NonNull;
 
@@ -25,4 +26,7 @@ public class Child2 {
 
     @JSONField(parseFeatures = Feature.InitStringFieldAsEmpty )
     private String field4;
+
+    @JSONField(serializeUsing = EnumTest.class, deserializeUsing = EnumTest.ModelValueDeserializer.class)
+    private ContractTypeEnum contractTypeEnum;
 }
