@@ -1,15 +1,14 @@
 package zhilian.z231018.usedesign.iteratorpattern;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.math.BigDecimal;
+import java.util.Iterator;
 
 /**
  * 服务生
  * @author hailang.zhang
  * @since 2023-10-25
  */
-public class MenuItem {
+public class MenuItem extends MenuComponent{
 
     public MenuItem(String name, String desc, Boolean isVegetarian, BigDecimal price) {
         this.name = name;
@@ -26,7 +25,6 @@ public class MenuItem {
     /**
      * 菜品描述
      */
-    @JSONField
     private String desc;
 
     /**
@@ -53,5 +51,15 @@ public class MenuItem {
 
     public BigDecimal getPrice() {
         return price;
+    }
+
+    @Override
+    public void print() {
+        super.print();
+    }
+
+    @Override
+    public Iterator createIterator() {
+        return null;
     }
 }
