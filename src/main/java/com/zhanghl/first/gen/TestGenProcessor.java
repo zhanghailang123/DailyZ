@@ -30,7 +30,7 @@ import com.squareup.javapoet.TypeSpec;
 //    }
 //
 //    @Override
-//    public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+//    public boolean statemc(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
 //        for (TypeElement element : annotations) {
 //            if (element.getQualifiedName().toString().equals(TestGen.class.getCanonicalName())) {
 //                //TODO Review
