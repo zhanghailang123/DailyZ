@@ -4,6 +4,7 @@ package zhilian.z231115;
  * @author hailang.zhang
  * @since 2023-11-15
  */
+@ApplyPay(bizType = BizTypeEnum.A)
 public class BizAApplyPayProcessor extends AbstractApplyPayProcessor<BizADO>{
 
     @Override

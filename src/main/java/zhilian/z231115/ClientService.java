@@ -7,15 +7,21 @@ package zhilian.z231115;
 public class ClientService {
 
     public void doApplyPay(ApplyPayRequest request) {
-        if (A) {
-            BizAApplyPayProcessor processor = new BizAApplyPayProcessor();
-            processor.applyPay(request);
-        } else if (B) {
-            BizBApplyPayProcessor processor = new BizBApplyPayProcessor();
-            processor.applyPay(request);
-        } else if (C) {
-            BizCApplyPayProcessor processor = new BizCApplyPayProcessor();
-            processor.applyPay(request);
-        }
+//        if (request.getType().equals(A)) {
+//            BizAApplyPayProcessor processor = new BizAApplyPayProcessor();
+//            processor.applyPay(request);
+//        } else if (request.getType().equals(B)) {
+//            BizBApplyPayProcessor processor = new BizBApplyPayProcessor();
+//            processor.applyPay(request);
+//        } else if (request.getType().equals(C)) {
+//            BizCApplyPayProcessor processor = new BizCApplyPayProcessor();
+//            processor.applyPay(request);
+//        }
+
+        BizFactory.getApplyPayProcessor(BizTypeEnum.B);
+    }
+
+    public static void main(String[] args) {
+
     }
 }
