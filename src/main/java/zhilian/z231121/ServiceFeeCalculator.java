@@ -7,7 +7,7 @@ import java.math.RoundingMode;
  * @author hailang.zhang
  * @since 2023-11-21
  */
-public class ServiceFeeCalculator implements ICalculator<Task{
+public class ServiceFeeCalculator implements ICalculator<Task>{
 
     @Override
     public BigDecimal calcualate(Task task) {
