@@ -1,4 +1,4 @@
-package aboutthread;
+package main.java.aboutthread;
 
 import lombok.extern.slf4j.Slf4j;
 

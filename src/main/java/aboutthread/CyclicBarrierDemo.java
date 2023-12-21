@@ -1,4 +1,4 @@
-package aboutthread;
+package main.java.aboutthread;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
@@ -28,6 +28,8 @@ public class CyclicBarrierDemo {
                 }
             },String.valueOf(temp)).start();
         }
+
+        System.out.println(cyclicBarrier.getNumberWaiting());
 
     }
 }

@@ -1,4 +1,4 @@
-package aboutthread;
+package main.java.aboutthread;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;

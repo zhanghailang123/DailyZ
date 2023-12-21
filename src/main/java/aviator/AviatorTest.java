@@ -14,34 +14,46 @@ import java.util.stream.Collectors;
 public class AviatorTest {
 
     public static void main(String[] args) {
-//        Long result = (Long)AviatorEvaluator.execute("1 + 2 + 3");
-//        System.out.println("这是一个测试:" + result);
-        List<String> strings = Arrays.asList("aaa","bbb","","ccc","zhl","","zy");
-        List<String> filterStrings = strings.stream().filter(String -> !String.isEmpty()).collect(Collectors.toList());
-        System.out.println("筛选列表" + filterStrings);
-        Random random = new Random();
-        random.ints().limit(10).sorted().forEach(System.out::println);
+        Map<String, Integer> map = new HashMap<>();
+        map.put("aaaaa", 1);
+        map.put("bbb", 1);
+        map.put("cccc", 1);
 
-        List<String> stringList = Arrays.asList("a","bb","cc","dd","zz","","hh","ll");
-        Map<Object, Object> hashMap = new HashMap<>();
-        hashMap = stringList.stream()
-                .collect( Collectors.toMap( a -> stringList.indexOf(a), a -> a ) );
-        Collectors.toList();
-        hashMap.forEach((key,value) -> {System.out.println(key +"vvvvv" + value);});
-        System.out.println(stringList.indexOf(stringList));
-        /**
-         * Jdk 1.7 合并字符创的方法
-         */
-        String mergedString  = getMergedString(stringList,"zhl!");
-        System.out.println("1.7合并后的字符串" + mergedString);
+        Map<String, Object> maps = new HashMap<>();
+        maps.put("map", map);
+        maps.put("test", "aaaa");
 
-        /**
-         * Jdk 1.8 合并字符串的方法
-         */
-        mergedString = stringList.stream().collect(Collectors.joining(",,,"));
-        String mergedString1  = stringList.stream().filter(str ->!str.isEmpty()).collect(Collectors.joining("????"));
-        System.out.println("去空后的字符串" + mergedString1);
-        System.out.println("1.8合并后的字符串" + mergedString);
+        Boolean result = (Boolean)AviatorEvaluator.execute("seq.contains_key(map, test)", maps);
+        System.out.println("这是一个测试:" + result);
+
+
+
+//        List<String> strings = Arrays.asList("aaa","bbb","","ccc","zhl","","zy");
+//        List<String> filterStrings = strings.stream().filter(String -> !String.isEmpty()).collect(Collectors.toList());
+//        System.out.println("筛选列表" + filterStrings);
+//        Random random = new Random();
+//        random.ints().limit(10).sorted().forEach(System.out::println);
+//
+//        List<String> stringList = Arrays.asList("a","bb","cc","dd","zz","","hh","ll");
+//        Map<Object, Object> hashMap = new HashMap<>();
+//        hashMap = stringList.stream()
+//                .collect( Collectors.toMap( a -> stringList.indexOf(a), a -> a ) );
+//        Collectors.toList();
+//        hashMap.forEach((key,value) -> {System.out.println(key +"vvvvv" + value);});
+//        System.out.println(stringList.indexOf(stringList));
+//        /**
+//         * Jdk 1.7 合并字符创的方法
+//         */
+//        String mergedString  = getMergedString(stringList,"zhl!");
+//        System.out.println("1.7合并后的字符串" + mergedString);
+//
+//        /**
+//         * Jdk 1.8 合并字符串的方法
+//         */
+//        mergedString = stringList.stream().collect(Collectors.joining(",,,"));
+//        String mergedString1  = stringList.stream().filter(str ->!str.isEmpty()).collect(Collectors.joining("????"));
+//        System.out.println("去空后的字符串" + mergedString1);
+//        System.out.println("1.8合并后的字符串" + mergedString);
 
     }
     private static String getMergedString(List<String> list,String separator){
