@@ -40,17 +40,17 @@ public class ReverseList {
 //        }
 //        return prev;
         //再来一次
-//        Node result = null;
-//        while (head != null){
-//            //先将Node的next节点保存，以便接下来循环使用next从而实现链表的反转 下面一步会修改head.next 这样对引用来说是不是会有问题
-//            Node temp = head.next;
-//            head.next = result;
-//            //循环构建反转后的链表
-//            result = head;
-//            //将head的next赋值给下一次循环的head
-//            head = temp;
-//        }
-//        return result;
+        Node result = null;
+        while (head != null){
+            //先将Node的next节点保存，以便接下来循环使用next从而实现链表的反转 下面一步会修改head.next 这样对引用来说是不是会有问题
+            Node temp = head.next;
+            head.next = result;
+            //循环构建反转后的链表
+            result = head;
+            //将head的next赋值给下一次循环的head
+            head = temp;
+        }
+        return result;
 //        Node prev = null;
 //        Node curr = head;
 //        while (curr != null) {
@@ -60,16 +60,16 @@ public class ReverseList {
 //            prev = head;
 //        }
 //        return head;
-        Node pre = null;
-
-        while (head != null) {
-            Node curr = head;
-            pre = curr;
-            curr.next = null;
-            head = head.next;
-        }
-
-        return pre;
+//        Node pre = null;
+//
+//        while (head != null) {
+//            Node curr = head;
+//            pre = curr;
+//            curr.next = null;
+//            head = head.next;
+//        }
+//
+//        return pre;
     }
 
 

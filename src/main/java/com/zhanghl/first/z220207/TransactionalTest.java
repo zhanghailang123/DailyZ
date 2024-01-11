@@ -3,10 +3,6 @@ package com.zhanghl.first.z220207;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import zhilian.z220222.CompleableFutureTest;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executors;
 
 /**
  * @description:
