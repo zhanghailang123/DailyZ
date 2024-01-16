@@ -1,5 +1,8 @@
 package zhilian.z2024.z01.testref;
 
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUtil;
+
 /**
  * @author hailang.zhang
  * @since 2024-01-09
@@ -7,22 +10,23 @@ package zhilian.z2024.z01.testref;
 public class TestRefMain {
 
     public static void main(String[] args) {
-        TestStu stu = new TestStu(1);
-        TestStu child = new TestStu(2);
-        stu.add(child);
-
-        TestStu test = stu;
-
-        TestStu test2 = test.next;
-
-        System.out.println(test.hashCode());
-        System.out.println(test2.hashCode());
-
-        stu.setId(100);
-        System.out.println(test.getId());
-
-        child.setId(200);
-        System.out.println(test2.getId());
-
+//        TestStu stu = new TestStu(1);
+//        TestStu child = new TestStu(2);
+//        stu.add(child);
+//
+//        TestStu test = stu;
+//
+//        TestStu test2 = test.next;
+//
+//        System.out.println(test.hashCode());
+//        System.out.println(test2.hashCode());
+//
+//        stu.setId(100);
+//        System.out.println(test.getId());
+//
+//        child.setId(200);
+//        System.out.println(test2.getId());
+        DateTime parse = DateUtil.parse("2023/01", "yyyy/MM/dd");
+        System.out.println(parse);
     }
 }
