@@ -3,6 +3,8 @@ package zhilian.z2024.z01.testref;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
 
+import java.text.DateFormat;
+
 /**
  * @author hailang.zhang
  * @since 2024-01-09
@@ -26,7 +28,9 @@ public class TestRefMain {
 //
 //        child.setId(200);
 //        System.out.println(test2.getId());
-        DateTime parse = DateUtil.parse("2023/01", "yyyy/MM/dd");
-        System.out.println(parse);
+//        DateTime parse = DateUtil.parse("2023/01", "yyyy/MM/dd");
+        DateTime parse = DateTime.of("2023/1/1", "yyyy/MM/dd");
+        String format = DateUtil.format(parse, "yyyy-MM-dd");
+        System.out.println(format);
     }
 }
