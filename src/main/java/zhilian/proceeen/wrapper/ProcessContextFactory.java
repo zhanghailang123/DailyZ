@@ -1,7 +1,7 @@
 package zhilian.proceeen.wrapper;
 
 import lombok.extern.slf4j.Slf4j;
-import zhilian.proceeen.process.ProcessContext;
+import zhilian.proceeen.processor.ProcessContext;
 import zhilian.proceeen.process.ProcessorDefinition;
 import zhilian.proceeen.wrapper.instance.ProcessorInstanceCreator;
 import zhilian.proceeen.wrapper.instance.ReflectNodeInstanceCreator;

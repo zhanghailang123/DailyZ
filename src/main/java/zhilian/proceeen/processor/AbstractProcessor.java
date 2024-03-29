@@ -1,7 +1,5 @@
 package zhilian.proceeen.processor;
 
-import zhilian.proceeen.process.ProcessContext;
-
 /**
  * 定义process
  * @author hailang.zhang
@@ -29,5 +27,10 @@ public abstract class AbstractProcessor implements Processor {
     @Override
     public void setName(String name) {
 
+    }
+
+    @Override
+    public void caughtException(ProcessContext context, Throwable throwable) {
+        //no-op
     }
 }
