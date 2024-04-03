@@ -13,7 +13,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * @description: javaassist test
+ * @description: javaassist first
  * @author: zhanghailang
  * @date: 2022/3/23 0023 22:37
  */

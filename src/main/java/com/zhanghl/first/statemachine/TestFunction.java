@@ -5,5 +5,5 @@ public interface TestFunction<T> {
 
     void accept(T t);
 
-//    void test(T t);
+//    void first(T t);
 }

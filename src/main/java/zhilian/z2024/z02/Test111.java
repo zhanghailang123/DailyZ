@@ -42,6 +42,6 @@ class TestImage {
 //        byte[] bytes = Base64.getDecoder().decode(response.body());
 //        System.out.println(bytes);
 
-        System.out.println(AesUtils.class.getName());
+//        System.out.println(AesUtils.class.getName());
     }
 }

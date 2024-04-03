@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class TestCharJson {
     /**
-     * test url
+     * first url
      */
     private String url;
 
@@ -20,7 +20,7 @@ public class TestCharJson {
 //        {
 //            "url": "https",
 //                "@comment": {
-//            "url": "/**\n     * test url\n     */"
+//            "url": "/**\n     * first url\n     */"
 //        }
 //        }
         String s ="";

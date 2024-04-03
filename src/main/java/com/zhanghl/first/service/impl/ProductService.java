@@ -64,7 +64,7 @@ public class ProductService {
                 //创建订单
                 Order order = new Order();
                 order.setProductName(Thread.currentThread().getName());
-                order.setProduct("test");
+                order.setProduct("first");
                 this.orderMapper.insert(order);
 
                 log.info(Thread.currentThread().getName() + "创建订单成功了");

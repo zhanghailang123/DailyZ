@@ -17,15 +17,15 @@ public class TestRefMain {
 //        TestStu child = new TestStu(2);
 //        stu.add(child);
 //
-//        TestStu test = stu;
+//        TestStu first = stu;
 //
-//        TestStu test2 = test.next;
+//        TestStu test2 = first.next;
 //
-//        System.out.println(test.hashCode());
+//        System.out.println(first.hashCode());
 //        System.out.println(test2.hashCode());
 //
 //        stu.setId(100);
-//        System.out.println(test.getId());
+//        System.out.println(first.getId());
 //
 //        child.setId(200);
 //        System.out.println(test2.getId());

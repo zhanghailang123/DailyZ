@@ -24,6 +24,6 @@ public class TestListen1 {
         product.setCount(111);
 
         this.productMapper.insert(product);
-        throw new RuntimeException("test");
+        throw new RuntimeException("first");
     }
 }

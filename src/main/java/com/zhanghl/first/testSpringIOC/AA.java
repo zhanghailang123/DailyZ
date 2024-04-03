@@ -18,7 +18,7 @@ public class AA {
     @Autowired
     private BB bb;
 
-    private String a = "test zhl";
+    private String a = "first zhl";
 
     private String b;
 

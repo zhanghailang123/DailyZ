@@ -1,0 +1,62 @@
+server:
+  port: 8099
+# 数据库相关的信息配置 TODO
+#logging:
+#  level:
+#    root: debug
+spring:
+    datasource:
+#      url: jdbc:postgresql://172.17.5.141:5432/gig_contract
+#      username: deliver_zhaopin
+#      password: deliver_zhaopin
+#      driver-class-name: org.postgresql.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/order?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123456
+    redis:
+      host: localhost
+      port: 6379
+#      cluster:
+#        nodes:
+#          - 172.17.90.50:6379
+#          - 172.17.90.51:6379
+#          - 172.17.90.52:6379
+#        max-redirects: 1
+#      lettuce:
+#        pool:
+
+mybatis:
+  mapper-scanner:
+    # 定义mybatis扫描的基础包
+    base-package: com.zhaopin.innovation.cjol.plat.infrastructure
+    properties:
+
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 50
+    default-statement-timeout: 60
+    auto-mapping-unknown-column-behavior: WARNING
+
+
+ruyuan:
+  tend:
+    consistency:
+      parallel:
+        pool:
+          # 不配置默认值就是5
+          thread-max-pool-size: 5
+          # 不配置默认值就是5
+          thread-core-pool-size: 5
+          # 不配置默认值就是60
+          thread-pool-keep-alive-time: 60
+          # 不配置默认值就是SECONDS
+          thread-pool-keep-alive-time-unit: SECONDS
+          # 不配置默认值就是100
+          thread-pool-queue-size: 100
+      action:
+        # 默认值是0 也就是 只要出现失败的情况，就会走降级逻辑，这里记的配置降级类。如果没有配置降级类，则不会走降级逻辑
+        fail-count-threshold: 0
+      shard:
+        # 表示任务表一个库中，如果确认使用单库模式，可以不配置 默认就是false  这里只是为了说明，就写了出来
+        task-shared: false

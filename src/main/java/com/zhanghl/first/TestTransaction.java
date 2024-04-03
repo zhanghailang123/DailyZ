@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @description: test
+ * @description: first
  * @author: zhanghailang
  * @date: 2022/1/5 17:43
  */
@@ -29,8 +29,8 @@ public class TestTransaction {
 
 //    @Transactional(rollbackFor = Exception.class)
     public void method1(){
-        System.out.println("test transactional start");
-        throw new RuntimeException("test transactional ex");
+        System.out.println("first transactional start");
+        throw new RuntimeException("first transactional ex");
     }
 //
 //    @GetMapping(value = "/redisTest")

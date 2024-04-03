@@ -17,6 +17,10 @@ public class TestTransactionalEvent {
     }
 
     public static void main(String[] args) {
+        String a = "Test1111";
 
+        StringBuilder builder = new StringBuilder(null);
+
+        System.out.println(builder.toString());
     }
 }

@@ -15,7 +15,7 @@ public class TestZ {
 //        System.out.println(DateUtil.current(false));
         //are you right?
         try {
-            throw new RuntimeException("test ex");
+            throw new RuntimeException("first ex");
         } catch (Exception e) {
             e.printStackTrace();
             log.error("erro：{}",e.getStackTrace());

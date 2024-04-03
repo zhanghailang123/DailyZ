@@ -46,9 +46,9 @@ public class DealBankServiceImpl {
 //        Dese.idCardNum("",4, 4);
 //        LinkedList<LinkedList<Integer>> linkedLists = new LinkedList<>();
 //        linkedLists.removeLast();
-//        LinkedList<Integer> test = new LinkedList<>();
-//        test.add(1);
-//        linkedLists.add(test);
+//        LinkedList<Integer> first = new LinkedList<>();
+//        first.add(1);
+//        linkedLists.add(first);
 //        System.out.println(linkedLists);
         String s = "11111";
         String substring = s.substring(0, 2);

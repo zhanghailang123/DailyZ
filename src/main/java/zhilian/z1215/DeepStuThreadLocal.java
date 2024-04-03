@@ -43,7 +43,7 @@ public class DeepStuThreadLocal {
     //职业规划 生命中有哪些是对我重要的事情
     //认真工作
     private String getString(){
-        return "test";
+        return "first";
     }
 
 

@@ -23,7 +23,7 @@ public class AviatorTest {
         maps.put("map", map);
         maps.put("test", "aaaa");
 
-        Boolean result = (Boolean)AviatorEvaluator.execute("seq.contains_key(map, test)", maps);
+        Boolean result = (Boolean)AviatorEvaluator.execute("seq.contains_key(map, first)", maps);
         System.out.println("这是一个测试:" + result);
 
 
