@@ -43,5 +43,12 @@ class TestImage {
 //        System.out.println(bytes);
 
 //        System.out.println(AesUtils.class.getName());
+
+        boolean flag = false;
+        for (int i = 0; i < 10; i++) {
+            flag |= i == 5;
+            System.out.println(i);
+        }
+        System.out.println(flag);
     }
 }
