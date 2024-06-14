@@ -27,7 +27,7 @@ public class DeepStuThreadLocal {
     //作用
     //Thread function 引用类型 静态内部类 ThreadLocalMap 内存泄漏问题  解决Hash冲突--》开放定址法
     //应用实例
-    //升级版ThreadLocal FastThreadLocal
+    //升级版ThreadLocal FastThreadLocal 数组
 
     //被讨厌的勇气
     //专注

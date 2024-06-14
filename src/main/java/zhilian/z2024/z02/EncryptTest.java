@@ -10,7 +10,7 @@ public class EncryptTest {
 
     public static void main(String[] args) {
 //        System.out.println(AesUtils.encrypt("125911537210301", "1CB78829F-663-18"));
-        System.out.println(AesUtils.decrypt("XkJh83sJBlWF3YzRjX++5Q==","1CB78829F-663-18"));
+        System.out.println(AesUtils.decrypt("r3UkYJU7aU4ZxHIc7j/ByA==","1CB78829F-663-18"));
 
 //        System.out.println(DesensitizedUtil.email("1231232131231@qq.com"));
     }
